@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Col, Container, Form, FormControl,Row } from 'react-bootstrap';
 import './style.css'
 import { connect } from "react-redux"
+import { Redirect } from 'react-router-dom';
 
 class Masuk extends Component {
     constructor(props) {
@@ -15,7 +16,7 @@ class Masuk extends Component {
         this.setState({        
             [e.target.name]:e.target.value
         })
-        console.log(e.target.name);
+        
     }
     onLogin = () => {
         const { username, password } = this.state
@@ -24,7 +25,7 @@ class Masuk extends Component {
             if (statusLogin){
                 window.alert('Berhasil Login!')
                 let type = statusLogin.type
-                this.props.doLogin({username,password,type},this.props.userList)      
+                this.props.doLogin({username,password,type},this.props.userList,this.props.listProduct)      
             }else {
                 window.alert('Password atau Username Tidak Sesuai')
             }
@@ -35,6 +36,9 @@ class Masuk extends Component {
         }
 
     render() { 
+        if (this.props.statusLogin){
+            return <Redirect to='/'/>
+        }
         return ( 
             <Container>
                 <Row>
@@ -57,12 +61,13 @@ const mapStateToProps = (state) => {
     return {
         statusLogin: state.auth.isLoggedIn,
         userList : state.auth.userListFromApp,
+        listProduct: state.product.listProduct,
     }
     
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    doLogin: (dataLogin,userlist) => dispatch({ type: "LOGIN", payload: {dataLogin,userlist}}),
+    doLogin: (dataLogin,userlist,listProduct) => dispatch({ type: "LOGIN", payload: {dataLogin,userlist,listProduct}}),
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(Masuk)

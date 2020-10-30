@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button, Col, Container, Form, FormControl,Row } from 'react-bootstrap';
 import './style.css'
 import { connect } from "react-redux"
-
+import { Redirect } from 'react-router-dom';
 class Daftar extends Component {
     constructor(props) {
         super(props);
@@ -29,8 +29,9 @@ class Daftar extends Component {
                 window.alert('Username sudah digunakan!');
             }else{
                 if (password === passwordConfirm){ 
-                    window.alert('Berhasil Daftar!')
+                    window.alert('Berhasil Daftar, anda akan berada dihalaman utama')
                     this.props.doRegist({username,email,password,name,type},this.props.userList)
+                    this.props.doLogin({username,password,type},this.props.userList)
                 }   
                 else {
                     window.alert('Password tidak sama!'); 
@@ -42,6 +43,9 @@ class Daftar extends Component {
         }
       }
     render() { 
+        if (this.props.statusLogin){
+            return <Redirect to='/'/>
+        }
         return ( 
             <Container>
                 <Form>
@@ -70,6 +74,7 @@ class Daftar extends Component {
 const mapStateToProps = (state) => {
     return {
         userList : state.auth.userListFromApp,
+        statusLogin : state.auth.isLoggedIn
     }
     
 }

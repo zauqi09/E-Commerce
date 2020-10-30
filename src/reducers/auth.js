@@ -18,7 +18,7 @@ const initialState = {
 }
 
 
-const authReducer = (state = {}, action) => {
+const authReducer = (state = initialState, action) => {
     
     switch (action.type) {
         case "LOGIN":
@@ -35,14 +35,20 @@ const authReducer = (state = {}, action) => {
             return {
                 isLoggedIn: false,
                 dataLogin : {},
-                userListFromApp: action.payload
+                userListFromApp: action.payload.userList
             }
         case "REGISTER":
             return {
                 userListFromApp: [...action.payload.userlist, action.payload.dataRegister]
             }
+        case "ADDPRODUCT":
+            return {
+                isLoggedIn: true,
+                dataLogin: action.payload.dataLogin,
+                userListFromApp: action.payload.userList
+            }
         default:
-            return state
+            return initialState
         }
     }
 export default authReducer
