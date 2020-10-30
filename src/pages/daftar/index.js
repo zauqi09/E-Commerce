@@ -30,8 +30,7 @@ class Daftar extends Component {
             }else{
                 if (password === passwordConfirm){ 
                     window.alert('Berhasil Daftar, anda akan berada dihalaman utama')
-                    this.props.doRegist({username,email,password,name,type},this.props.userList)
-                    this.props.doLogin({username,password,type},this.props.userList)
+                    this.props.doRegist({username,email,password,name,type},{username,password,type},this.props.userList,this.props.listProduct)
                 }   
                 else {
                     window.alert('Password tidak sama!'); 
@@ -74,14 +73,16 @@ class Daftar extends Component {
 const mapStateToProps = (state) => {
     return {
         userList : state.auth.userListFromApp,
-        statusLogin : state.auth.isLoggedIn
+        statusLogin : state.auth.isLoggedIn,
+        listProduct: state.product.listProduct,
+        dataLogin : state.auth.dataLogin,
     }
     
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    doLogin: (dataLogin,userlist) => dispatch({ type: "LOGIN", payload: {dataLogin,userlist}}),
-    doRegist: (dataRegister,userlist) => dispatch({ type: "REGISTER", payload: {dataRegister,userlist}}),
+    doLogin: (dataLogin,userlist,listProduct) => dispatch({ type: "LOGIN", payload: {dataLogin,userlist,listProduct}}),
+    doRegist: (dataRegister,dataLogin,userlist,listProduct) => dispatch({ type: "REGISTER", payload: {dataRegister,dataLogin,userlist,listProduct}}),
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(Daftar)

@@ -14,6 +14,10 @@ const productReducer = (state = initialState, action) => {
             return {
                 listProduct: action.payload.listProduct
             } 
+        case "REGISTER":
+            return {
+                listProduct: action.payload.listProduct
+            } 
         case "LOGOUT":
             return {
                 listProduct: action.payload.listProduct

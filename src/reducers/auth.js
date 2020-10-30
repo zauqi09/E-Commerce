@@ -39,7 +39,9 @@ const authReducer = (state = initialState, action) => {
             }
         case "REGISTER":
             return {
-                userListFromApp: [...action.payload.userlist, action.payload.dataRegister]
+                userListFromApp: [...action.payload.userlist, action.payload.dataRegister],
+                isLoggedIn: true,
+                dataLogin: action.payload.dataLogin,
             }
         case "ADDPRODUCT":
             return {
