@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux"
+import {EditUser} from '../../components'
 class ListUser extends Component {
     constructor(props) {
         super(props);
@@ -18,7 +19,7 @@ class ListUser extends Component {
                             <td>{user.name}</td>
                             <td>
                                         <button className='btn btn sizefix'>Detail</button>
-                                        <button className='btn btn-warning sizefix'> Edit</button>
+                                        <EditUser indexProd={idx}/>  
                                         <button className='btn btn-danger sizefix'>Delete</button>             
                             </td>
                         </tr>
