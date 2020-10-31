@@ -3,7 +3,7 @@ import {Navbar,Nav,Form,FormControl,Button} from 'react-bootstrap'
 import {Container} from 'react-bootstrap'
 import {NavLink} from '../../components'
 import { connect } from "react-redux"
-
+import './style.css'
 class Navigation extends Component {
     constructor(props) {
         super(props);
@@ -38,7 +38,7 @@ class Navigation extends Component {
                                     {
                                         this.props.dataLogin.type===1?
                                         <Nav className="mr-right">
-                                            <NavLink link="/keranjang">Keranjang</NavLink>
+                                            <NavLink link="/keranjang"><img src="https://www.flaticon.com/svg/static/icons/svg/833/833314.svg" width="17" /></NavLink>
                                             <NavLink link="/admin">Admin</NavLink>
                                             <li className="nav-item">
                                                 <div className="nav-link" onClick={this.change}>Keluar</div>
@@ -46,7 +46,7 @@ class Navigation extends Component {
                                         </Nav>
                                         :
                                         <Nav className="mr-right">
-                                            <NavLink link="/keranjang">Keranjang</NavLink>
+                                            <NavLink link="/keranjang"><img src="https://www.flaticon.com/svg/static/icons/svg/833/833314.svg" width="17" /></NavLink>
                                             <li className="nav-item">
                                                 <div className="nav-link" onClick={this.change}>Keluar</div>
                                             </li >
