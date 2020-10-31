@@ -62,8 +62,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        handlePlus: () => dispatch('PLUS_ORDER'),
-        handleMinus: () => dispatch('MINUS_ORDER'),
+        handlePlus: () => dispatch({ type: 'PLUS_ORDER' }),
+        handleMinus: () => dispatch({ type: 'MINUS_ORDER' }),
     }
 }
  
