@@ -56,7 +56,7 @@ class Keranjang extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        order: state.order,
+        order: state.cart.order,
     }
 }
 

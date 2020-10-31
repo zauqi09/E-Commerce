@@ -4,7 +4,7 @@
 
 .count {
     background: #777777;
-    padding: 10px;
+    /* padding: 10px; */
     border-radius: 50%;
     min-width: 10px;
     height: 10px;
@@ -14,5 +14,5 @@
     font-size: 11px;
     position: absolute;
     bottom: 7px;
-    right: -15px;
+    right: -10px;
 }
