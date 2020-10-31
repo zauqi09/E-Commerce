@@ -22,9 +22,9 @@ class Home extends Component {
                 </div>
 
                 {/* container best seller */}
-                <div bg="light" expand="lg">
+                <Navbar bg="light" expand="lg">
                     <Container><h4 className="header4">Best Seller</h4></Container>
-                </div>
+                </Navbar>
                 <Container>
                     <Row>
                         <SixCol dataCard={this.props.bestSeller}/>

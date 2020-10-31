@@ -7,5 +7,6 @@ import Pembayaran from './pembayaran'
 import Admin from './admin'
 import Produk from './produk'
 import Detail from './detail'
+import Profil from './profil'
 
-export {Home,Masuk,Daftar,Katalog,Keranjang,Pembayaran,Admin,Produk,Detail} 
+export {Home,Masuk,Daftar,Katalog,Keranjang,Pembayaran,Admin,Produk,Detail,Profil} 
