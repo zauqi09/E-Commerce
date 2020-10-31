@@ -65,6 +65,7 @@ class AddProduk extends Component {
                     <Form>
                         <FormControl onChange={this.onChangeInput} name="judul" type="text" placeholder="Judul" className="formcontrol"/>
                         <FormControl name="kategori" as="select" onChange={this.onChangeInput}>
+                                <option >--</option>
                                 <option value="Novel">Novel</option>
                                 <option value="Sains">Sains</option>
                                 <option value="Motivasi">Motivasi</option>

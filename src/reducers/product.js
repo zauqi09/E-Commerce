@@ -4,6 +4,7 @@ const initialState = {
     newArrival:[],
     discountItem:[],
     dataProduct:{},
+    detailProduct:{}
 }
 
 
@@ -74,6 +75,14 @@ const productReducer = (state = initialState, action) => {
                 bestSeller: action.payload.bestSeller,
                 newArrival: action.payload.newArrival,
                 discountItem: action.payload.discountItem,
+            }
+        case "VIEWDETAIL":
+            return {
+                listProduct: action.payload.listProduct,
+                bestSeller: action.payload.bestSeller,
+                newArrival: action.payload.newArrival,
+                discountItem: action.payload.discountItem,
+                detailProduct: action.payload.detailProduct,
             }     
         default:
             return initialState

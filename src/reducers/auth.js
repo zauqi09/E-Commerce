@@ -76,6 +76,12 @@ const authReducer = (state = initialState, action) => {
                 dataLogin: action.payload.dataLogin,
                 userListFromApp: action.payload.userList
             }
+        case "VIEWDETAIL":
+            return {
+                isLoggedIn: true,
+                dataLogin: action.payload.dataLogin,
+                userListFromApp: action.payload.userList
+            }
         default:
             return initialState
         }
