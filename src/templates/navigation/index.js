@@ -3,6 +3,8 @@ import {Navbar,Nav,Form,FormControl,Button} from 'react-bootstrap'
 import {Container} from 'react-bootstrap'
 import {NavLink} from '../../components'
 import { connect } from "react-redux"
+import { connect } from 'react-redux'
+import './style.css'
 
 class Navigation extends Component {
     constructor(props) {
@@ -57,6 +59,14 @@ class Navigation extends Component {
                                     </Nav>
                                 </>
                                 }
+                                <Nav className="mr-right">
+                                    <NavLink link="/masuk">Masuk</NavLink>
+                                    <NavLink link="/daftar">Daftar</NavLink>
+                                    <div className="troley">
+                                        <NavLink link="/keranjang"><img src="https://www.flaticon.com/svg/static/icons/svg/833/833314.svg" width="17" /></NavLink>
+                                        <div className="count">{this.props.order}</div>
+                                    </div>
+                                </Nav>
                             </Navbar.Collapse>
                 </Container>
             </Navbar>
@@ -77,3 +87,18 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(Navigation)
+
+const mapStateToProps = (state) => {
+    return {
+        order: state.cart.order,
+    }
+}
+
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         handlePlus: () => dispatch('PLUS_ORDER'),
+//         handleMinus: () => dispatch('MINUS_ORDER'),
+//     }
+// }
+ 
+export default connect(mapStateToProps)(Navigation);
