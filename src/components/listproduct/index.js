@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux"
-import {ModalDetail} from '../../components'
+import {ModalDetail,EditProduk} from '../../components'
 class ListProduct extends Component {
     constructor(props) {
         super(props);
@@ -22,7 +22,7 @@ class ListProduct extends Component {
                             <td>{product.penulis}</td>
                             <td>{product.harga}</td>
                             <td>
-                                        <button className='btn btn-warning sizefix'> Edit</button>
+                                        <EditProduk indexProd={idx}/>  
                                         <button className='btn btn-danger sizefix'>Delete</button>   
                                         <ModalDetail indexProd={idx}/>
                                                   
@@ -40,11 +40,6 @@ const mapStateToProps = (state) => {
         statusLogin: state.auth.isLoggedIn,
         userList : state.auth.userListFromApp,
         listProduct: state.product.listProduct,
-        bestSeller : state.product.bestSeller,
-        newArrival : state.product.newArrival,
-        discountItem : state.product.discountItem,
-        dataProduct : state.product.dataProduct,
-        dataLogin : state.auth.dataLogin
     }
     
 }
