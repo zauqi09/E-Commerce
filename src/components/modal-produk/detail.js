@@ -39,6 +39,8 @@ class ModalDetail extends Component {
                         <Modal.Body>
                             <FormLabel>Judul</FormLabel>
                             <FormControl placeholder={prod[index].judul} readOnly></FormControl>
+                            <FormLabel>Kategori</FormLabel>
+                            <FormControl placeholder={prod[index].kategori} readOnly></FormControl>
                             <FormLabel>Harga</FormLabel>
                             <FormControl placeholder={prod[index].harga} readOnly></FormControl>
                             <FormLabel>Penulis</FormLabel>

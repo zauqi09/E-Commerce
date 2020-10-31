@@ -17,6 +17,7 @@ class AddProduk extends Component {
             deskripsi : "",
             cover : "",
             harga : "",
+            kategori : "",
         }
     }
     onChangeInput = e => {
@@ -39,8 +40,8 @@ class AddProduk extends Component {
         })
     }   
     handleAdd=()=>{
-        const { judul,harga, bahasa, penulis,penerbit,negara,jumlahhal,deskripsi,cover } = this.state
-        this.props.addProduct({judul, harga, bahasa,penulis,penerbit,negara,jumlahhal,deskripsi,cover},this.props.userList,this.props.dataLogin,this.props.listProduct)
+        const { judul,kategori,harga, bahasa, penulis,penerbit,negara,jumlahhal,deskripsi,cover } = this.state
+        this.props.addProduct({judul,kategori, harga, bahasa,penulis,penerbit,negara,jumlahhal,deskripsi,cover},this.props.userList,this.props.dataLogin,this.props.listProduct)
         this.handleClose()
     }
 
@@ -58,6 +59,13 @@ class AddProduk extends Component {
               <Modal.Body>
                     <Form>
                         <FormControl onChange={this.onChangeInput} name="judul" type="text" placeholder="Judul" className="formcontrol"/>
+                        <Form.Control name="kategori" as="select" onChange={this.onChangeInput}>
+                                <option value="Novel">Novel</option>
+                                <option value="Sains">Sains</option>
+                                <option value="Motivasi">Motivasi</option>
+                                <option value="Komik">Komik</option>
+                                <option value="Anak">Anak</option>
+                        </Form.Control>
                         <FormControl onChange={this.onChangeInput} name="harga" type="number" placeholder="Harga" className="formcontrol"/>
                         <FormControl onChange={this.onChangeInput} name="penulis" type="text" placeholder="Penulis" className="formcontrol"/>
                         <FormControl onChange={this.onChangeInput} name="penerbit" type="text" placeholder="Penerbit" className="formcontrol"/>
