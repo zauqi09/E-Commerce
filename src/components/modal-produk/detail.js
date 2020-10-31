@@ -13,13 +13,7 @@ class ModalDetail extends Component {
 
     onAddToBestSeller=()=>{
         if ( this.props.bestSeller.length <= 5){
-            this.props.addToBestSeller(this.props.dataLogin,
-                this.props.userList,
-                this.props.listProduct,
-                this.props.bestSeller,
-                this.props.discountItem,
-                this.props.newArrival,
-                this.props.listProduct[this.props.indexProd])
+            this.props.addToBestSeller(this.props.listProduct[this.props.indexProd])
             
         } else {
             window.alert("Max 6 item terdaftar, silahkan hapus salah satu untuk menambahkan item")
@@ -28,13 +22,7 @@ class ModalDetail extends Component {
     }
     onAddToIemDiscount=()=>{
         if (this.props.discountItem.length <=5){
-            this.props.addToItemDiscount(this.props.dataLogin,
-                this.props.userList,
-                this.props.listProduct,
-                this.props.bestSeller,
-                this.props.discountItem,
-                this.props.newArrival,
-                this.props.listProduct[this.props.indexProd])
+            this.props.addToItemDiscount(this.props.listProduct[this.props.indexProd])
         } else {
             window.alert("Max 6 item terdaftar, silahkan hapus salah satu untuk menambahkan item")
         }
@@ -42,13 +30,7 @@ class ModalDetail extends Component {
     }
     onAddToNewArrival=()=>{
         if (this.props.newArrival.length <=5){
-            this.props.addToNewArrival(this.props.dataLogin,
-                this.props.userList,
-                this.props.listProduct,
-                this.props.bestSeller,
-                this.props.discountItem,
-                this.props.newArrival,
-                this.props.listProduct[this.props.indexProd])
+            this.props.addToNewArrival(this.props.listProduct[this.props.indexProd])
             
         } else {
             window.alert("Max 6 item terdaftar, silahkan hapus salah satu untuk menambahkan item")
@@ -143,16 +125,15 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    addProduct: (listProduct,userList,dataLogin) => dispatch({ type: "ADDPRODUCT", payload: {listProduct,userList,dataLogin}}),
-    addToBestSeller: (dataLogin,userlist,listProduct,bestSeller,discountItem,newArrival,dataProduct) => dispatch({ 
+    addToBestSeller: (dataProduct) => dispatch({ 
         type: "ADDTOBESTSELLER", 
-        payload: {dataLogin,userlist,listProduct,bestSeller,discountItem,newArrival,dataProduct}}),
-    addToItemDiscount: (dataLogin,userlist,listProduct,bestSeller,discountItem,newArrival,dataProduct) => dispatch({ 
+        payload: {dataProduct}}),
+    addToItemDiscount: (dataProduct) => dispatch({ 
         type: "ADDTOBESTDISCOUNTITEM", 
-        payload: {dataLogin,userlist,listProduct,bestSeller,discountItem,newArrival,dataProduct}}),
-    addToNewArrival: (dataLogin,userlist,listProduct,bestSeller,discountItem,newArrival,dataProduct) => dispatch({ 
+        payload: {dataProduct}}),
+    addToNewArrival: (dataProduct) => dispatch({ 
         type: "ADDTONEWARRIVAL", 
-        payload: {dataLogin,userlist,listProduct,bestSeller,discountItem,newArrival,dataProduct}}),
+        payload: {dataProduct}}),
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(ModalDetail)

@@ -8,6 +8,11 @@ class Detail extends Component {
         this.state = {  }
     }
 
+    onAddtoCart = () => {
+        const {dataLogin, detailProduct} = this.props
+        this.props.AddToCart({dataLogin, detailProduct})
+        this.props.handlePlus()
+    }
     
     render() { 
         return ( 
@@ -93,7 +98,7 @@ class Detail extends Component {
                                 {this.props.detailProduct.deskripsi}
                             </Card.Text>
                             <h3>Harga : Rp. {this.props.detailProduct.harga}
-                            <Button variant="success" style={{marginLeft: 400}}>Tambah Ke Keranjang</Button></h3>
+                            <Button onClick={this.onAddtoCart} variant="success" style={{marginLeft: 400}}>Tambah Ke Keranjang</Button></h3>
                         </Card.Body>
                     </Card>
                     </Col>
@@ -112,6 +117,7 @@ const mapStateToProps = (state) => {
         userList : state.auth.userListFromApp,
         listProduct: state.product.listProduct,
         order: state.cart.order,
+        listCart: state.cart.cart,
         bestSeller : state.product.bestSeller,
         newArrival : state.product.newArrival,
         discountItem : state.product.discountItem,
@@ -123,8 +129,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        ViewDetail: (dataLogin,userList,listProduct,bestSeller,discountItem,newArrival,detailProduct) => dispatch({ type: 'VIEWDETAIL', payload : {dataLogin,userList,listProduct,bestSeller,discountItem,newArrival,detailProduct}}),
-    
+        AddToCart: (dataCart) => dispatch({ type: 'ADDTOCART', payload : {dataCart}}),
+        handlePlus: () => dispatch({ type: 'PLUS_ORDER'}),
     }
 }
  

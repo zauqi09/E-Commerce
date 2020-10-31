@@ -40,13 +40,7 @@ class AddProduk extends Component {
     }   
     handleAdd=()=>{
         const { judul,kategori,harga, bahasa, penulis,penerbit,negara,jumlahhal,deskripsi,cover } = this.state
-        this.props.addProduct({judul,kategori, harga, bahasa,penulis,penerbit,negara,jumlahhal,deskripsi,cover},
-            this.props.userList,
-            this.props.dataLogin,
-            this.props.listProduct,
-            this.props.bestSeller,
-            this.props.discountItem,
-            this.props.newArrival)
+        this.props.addProduct({judul,kategori, harga, bahasa,penulis,penerbit,negara,jumlahhal,deskripsi,cover})
         this.handleClose()
     }
 
@@ -110,7 +104,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    addProduct: (dataProd,userList,dataLogin,listProduct,bestSeller,discountItem,newArrival) => dispatch({ type: "ADDPRODUCT", payload: {dataProd,userList,dataLogin,listProduct,bestSeller,discountItem,newArrival}}),
+    addProduct: (dataProd) => dispatch({ type: "ADDPRODUCT", payload: {dataProd}}),
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(AddProduk)
