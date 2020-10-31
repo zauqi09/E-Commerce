@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import {Container, Row, Col, Card, Button, Navbar} from 'react-bootstrap'
-import carousel1 from '../../img/carousel1.jpg'
-import carousel2 from '../../img/carousel2.jpg'
-import carousel3 from '../../img/carousel3.jpg'
-import rich_dad_poor_dad from '../../img/rich-dad-poor-dad.jpg'
-import The_Intelligent_Investor from '../../img/The_Intelligent_Investor.jpg'
+import {Container, Row, Button, Navbar} from 'react-bootstrap'
+import { connect } from "react-redux"
 import './style.css'
+import {SixCol} from '../../components'
 
 
 class Home extends Component {
@@ -30,76 +27,7 @@ class Home extends Component {
                 </div>
                 <Container>
                     <Row>
-                        <Col sm={2}>
-                            <Card style={{ width: '11rem' }}>
-                                <div className="imageHover">
-                                    <Card.Img variant="top" style={{ height: '15rem'}} src={rich_dad_poor_dad} />
-                                    <div className="cardHover">
-                                        <div className="hoverContent">Hover style</div>
-                                    </div>
-                                </div>
-                                <Card.Body>
-                                    <Card.Title>Rich Dad Poor Dad</Card.Title>
-                                    <div className="author">Robert T. Kiyosaki</div>
-                                    <div className="price">Rp. 68.000</div>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col sm={2}>
-                            <Card style={{ width: '11rem' }}>
-                                <div className="imageHover">
-                                    <Card.Img variant="top" style={{ height: '15rem'}} src={The_Intelligent_Investor} />
-                                    <div className="cardHover">
-                                        <div className="hoverContent">Hover style</div>
-                                    </div>
-                                </div>
-                                <Card.Body>
-                                    <Card.Title>The Intelligent Investor</Card.Title>
-                                    <div className="author">Benjamin Graham</div>
-                                    <div className="price">Rp. 99.000</div>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col sm={2}>
-                            <Card style={{ width: '11rem' }}>
-                                <Card.Img variant="top" style={{ height: '15rem'}} src={carousel3} />
-                                <Card.Body>
-                                    <Card.Title>Card Title</Card.Title>
-                                    <div className="author">Author</div>
-                                    <div className="price">Rp. Price</div>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col sm={2}>
-                            <Card style={{ width: '11rem' }}>
-                                <Card.Img variant="top" style={{ height: '15rem'}} src={carousel1} />
-                                <Card.Body>
-                                    <Card.Title>Card Title</Card.Title>
-                                    <div className="author">Author</div>
-                                    <div className="price">Rp. Price</div>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col sm={2}>
-                            <Card style={{ width: '11rem' }}>
-                                <Card.Img variant="top" style={{ height: '15rem'}} src={carousel2} />
-                                <Card.Body>
-                                    <Card.Title>Card Title</Card.Title>
-                                    <div className="author">Author</div>
-                                    <div className="price">Rp. Price</div>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col sm={2}>
-                            <Card style={{ width: '11rem' }}>
-                                <Card.Img variant="top" style={{ height: '15rem'}} src={carousel3} />
-                                <Card.Body>
-                                    <Card.Title>Card Title</Card.Title>
-                                    <div className="author">Author</div>
-                                    <div className="price">Rp. Price</div>
-                                </Card.Body>
-                            </Card>
-                        </Col>
+                        <SixCol dataCard={this.props.bestSeller}/>
                     </Row>
                     <Row>
                         <hr/>
@@ -118,71 +46,7 @@ class Home extends Component {
                         <hr/>
                     </Row>
                     <Row>
-                        <Col sm={2}>
-                            <Card style={{ width: '11rem' }}>
-                                <Card.Img variant="top" style={{ height: '15rem'}} src={carousel1} />
-                                <Card.Body>
-                                    <Card.Title>Card Title</Card.Title>
-                                    <div className="author">Author</div>
-                                    <div className="price">Rp. Price</div>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col sm={2}>
-                            <Card style={{ width: '11rem' }}>
-                                <Card.Img variant="top" style={{ height: '15rem'}} src={carousel2} />
-                                <Card.Body>
-                                    <Card.Title>Card Title</Card.Title>
-                                    <div className="author">Author</div>
-                                    <div className="price">Rp. Price</div>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col sm={2}>
-                            <Card style={{ width: '11rem' }}>
-                                <Card.Img variant="top" style={{ height: '15rem'}} src={carousel3} />
-                                <Card.Body>
-                                    <Card.Title>Card Title</Card.Title>
-                                    <div className="author">Author</div>
-                                    <div className="price">Rp. Price</div>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col sm={2}>
-                            <Card style={{ width: '11rem' }}>
-                                <Card.Img variant="top" style={{ height: '15rem'}} src={carousel1} />
-                                <Card.Body>
-                                    <Card.Title>Card Title</Card.Title>
-                                    <div className="author">Author</div>
-                                    <div className="price">Rp. Price</div>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col sm={2}>
-                            <Card style={{ width: '11rem' }}>
-                                <Card.Img variant="top" style={{ height: '15rem'}} src={carousel2} />
-                                <Card.Body>
-                                    <Card.Title>Card Title</Card.Title>
-                                    <div className="author">Author</div>
-                                    <div className="price">Rp. Price</div>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col sm={2}>
-                            <Card style={{ width: '11rem' }}>
-                                <div className="imageHover">
-                                    <Card.Img variant="top" style={{ height: '15rem'}} src={carousel3} />
-                                    <div className="cardHover">
-                                        <div className="hoverContent">Hover style</div>
-                                    </div>
-                                </div>
-                                <Card.Body>
-                                    <Card.Title>Card Title</Card.Title>
-                                    <div className="author">Author</div>
-                                    <div className="price">Rp. Price</div>
-                                </Card.Body>
-                            </Card>
-                        </Col>
+                        <SixCol dataCard={this.props.newArrival}/>
                     </Row>
                     <Row>
                         <hr/>
@@ -201,66 +65,7 @@ class Home extends Component {
                         <hr/>
                     </Row>
                     <Row>
-                        <Col sm={2}>
-                            <Card style={{ width: '11rem' }}>
-                                <Card.Img variant="top" style={{ height: '15rem'}} src={carousel1} />
-                                <Card.Body>
-                                    <Card.Title>Card Title</Card.Title>
-                                    <div className="author">Author</div>
-                                    <div className="price">Rp. Price</div>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col sm={2}>
-                            <Card style={{ width: '11rem' }}>
-                                <Card.Img variant="top" style={{ height: '15rem'}} src={carousel2} />
-                                <Card.Body>
-                                    <Card.Title>Card Title</Card.Title>
-                                    <div className="author">Author</div>
-                                    <div className="price">Rp. Price</div>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col sm={2}>
-                            <Card style={{ width: '11rem' }}>
-                                <Card.Img variant="top" style={{ height: '15rem'}} src={carousel3} />
-                                <Card.Body>
-                                    <Card.Title>Card Title</Card.Title>
-                                    <div className="author">Author</div>
-                                    <div className="price">Rp. Price</div>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col sm={2}>
-                            <Card style={{ width: '11rem' }}>
-                                <Card.Img variant="top" style={{ height: '15rem'}} src={carousel1} />
-                                <Card.Body>
-                                    <Card.Title>Card Title</Card.Title>
-                                    <div className="author">Author</div>
-                                    <div className="price">Rp. Price</div>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col sm={2}>
-                            <Card style={{ width: '11rem' }}>
-                                <Card.Img variant="top" style={{ height: '15rem'}} src={carousel2} />
-                                <Card.Body>
-                                    <Card.Title>Card Title</Card.Title>
-                                    <div className="author">Author</div>
-                                    <div className="price">Rp. Price</div>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col sm={2}>
-                            <Card style={{ width: '11rem' }}>
-                                <Card.Img variant="top" style={{ height: '15rem'}} src={carousel3} />
-                                <Card.Body>
-                                    <Card.Title>Card Title</Card.Title>
-                                    <div className="author">Author</div>
-                                    <div className="price">Rp. Price</div>
-                                </Card.Body>
-                            </Card>
-                        </Col>
+                        <SixCol dataCard={this.props.discountItem}/>
                     </Row>
                     <Row>
                         <hr/>
@@ -274,6 +79,18 @@ class Home extends Component {
     }
 }
  
+const mapStateToProps = (state) => {
+    return {
+        statusLogin: state.auth.isLoggedIn,
+        userList : state.auth.userListFromApp,
+        listProduct: state.product.listProduct,
+        bestSeller : state.product.bestSeller,
+        newArrival : state.product.newArrival,
+        discountItem : state.product.discountItem,
+        dataProduct : state.product.dataProduct,
+        dataLogin : state.auth.dataLogin
+    }
+    
+}
 
-
-export default Home
+export default connect(mapStateToProps)(Home)

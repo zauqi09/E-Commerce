@@ -27,10 +27,6 @@ const authReducer = (state = initialState, action) => {
                 dataLogin: action.payload.dataLogin,
                 userListFromApp: action.payload.userlist
             }
-        case "SAVETOREDUX":
-            return {
-                userListFromApp: [...initialState.userListFromApp, ...action.payload]
-            }
         case "LOGOUT":
             return {
                 isLoggedIn: false,
@@ -48,6 +44,25 @@ const authReducer = (state = initialState, action) => {
                 isLoggedIn: true,
                 dataLogin: action.payload.dataLogin,
                 userListFromApp: action.payload.userList
+            }
+        case "ADDTOBESTSELLER":
+            return {
+                isLoggedIn: true,
+                dataLogin: action.payload.dataLogin,
+                userListFromApp: action.payload.userlist
+            }      
+        case "ADDTONEWARRIVAL":
+            return {
+                isLoggedIn: true,
+                dataLogin: action.payload.dataLogin,
+                userListFromApp: action.payload.userlist
+            }  
+        
+        case "ADDTOBESTDISCOUNTITEM":
+            return {
+                isLoggedIn: true,
+                dataLogin: action.payload.dataLogin,
+                userListFromApp: action.payload.userlist
             }
         default:
             return initialState
