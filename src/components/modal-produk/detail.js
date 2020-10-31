@@ -10,6 +10,52 @@ class ModalDetail extends Component {
             show : false,
          }
     }
+
+    onAddToBestSeller=()=>{
+        if ( this.props.bestSeller.length <= 5){
+            this.props.addToBestSeller(this.props.dataLogin,
+                this.props.userList,
+                this.props.listProduct,
+                this.props.bestSeller,
+                this.props.discountItem,
+                this.props.newArrival,
+                this.props.listProduct[this.props.indexProd])
+            
+        } else {
+            window.alert("Max 6 item terdaftar, silahkan hapus salah satu untuk menambahkan item")
+        }
+        this.handleClose()
+    }
+    onAddToIemDiscount=()=>{
+        if (this.props.discountItem.length <=5){
+            this.props.addToItemDiscount(this.props.dataLogin,
+                this.props.userList,
+                this.props.listProduct,
+                this.props.bestSeller,
+                this.props.discountItem,
+                this.props.newArrival,
+                this.props.listProduct[this.props.indexProd])
+        } else {
+            window.alert("Max 6 item terdaftar, silahkan hapus salah satu untuk menambahkan item")
+        }
+        this.handleClose()
+    }
+    onAddToNewArrival=()=>{
+        if (this.props.newArrival.length <=5){
+            this.props.addToNewArrival(this.props.dataLogin,
+                this.props.userList,
+                this.props.listProduct,
+                this.props.bestSeller,
+                this.props.discountItem,
+                this.props.newArrival,
+                this.props.listProduct[this.props.indexProd])
+            
+        } else {
+            window.alert("Max 6 item terdaftar, silahkan hapus salah satu untuk menambahkan item")
+        }
+        this.handleClose()
+    }
+
     handleClose = () => {
         this.setState({
             setShow : false,
@@ -62,6 +108,15 @@ class ModalDetail extends Component {
                         </Modal.Body>
 
                         <Modal.Footer>
+                            <Button variant="secondary" onClick={this.onAddToBestSeller}>
+                                Best Seller
+                            </Button>
+                            <Button variant="secondary" onClick={this.onAddToIemDiscount}>
+                                Discount Item
+                            </Button>
+                            <Button variant="secondary" onClick={this.onAddToNewArrival}>
+                                New Arrival
+                            </Button>
                             <Button variant="secondary" onClick={this.handleClose}>
                                 Close
                             </Button>
@@ -75,15 +130,29 @@ class ModalDetail extends Component {
  
 const mapStateToProps = (state) => {
     return {
-        listProduct: state.product.listProduct,
+        statusLogin: state.auth.isLoggedIn,
         userList : state.auth.userListFromApp,
-        dataLogin : state.auth.dataLogin,
+        listProduct: state.product.listProduct,
+        bestSeller : state.product.bestSeller,
+        newArrival : state.product.newArrival,
+        discountItem : state.product.discountItem,
+        dataProduct : state.product.dataProduct,
+        dataLogin : state.auth.dataLogin
     }
     
 }
 
 const mapDispatchToProps = (dispatch) => ({
     addProduct: (listProduct,userList,dataLogin) => dispatch({ type: "ADDPRODUCT", payload: {listProduct,userList,dataLogin}}),
+    addToBestSeller: (dataLogin,userlist,listProduct,bestSeller,discountItem,newArrival,dataProduct) => dispatch({ 
+        type: "ADDTOBESTSELLER", 
+        payload: {dataLogin,userlist,listProduct,bestSeller,discountItem,newArrival,dataProduct}}),
+    addToItemDiscount: (dataLogin,userlist,listProduct,bestSeller,discountItem,newArrival,dataProduct) => dispatch({ 
+        type: "ADDTOBESTDISCOUNTITEM", 
+        payload: {dataLogin,userlist,listProduct,bestSeller,discountItem,newArrival,dataProduct}}),
+    addToNewArrival: (dataLogin,userlist,listProduct,bestSeller,discountItem,newArrival,dataProduct) => dispatch({ 
+        type: "ADDTONEWARRIVAL", 
+        payload: {dataLogin,userlist,listProduct,bestSeller,discountItem,newArrival,dataProduct}}),
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(ModalDetail)

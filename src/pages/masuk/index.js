@@ -25,7 +25,13 @@ class Masuk extends Component {
             if (statusLogin){
                 window.alert('Berhasil Login!')
                 let type = statusLogin.type
-                this.props.doLogin({username,password,type},this.props.userList,this.props.listProduct)      
+                this.props.doLogin({username,password,type},
+                    this.props.userList,
+                    this.props.listProduct,
+                    this.props.bestSeller,
+                    this.props.discountItem,
+                    this.props.newArrival
+                    )      
             }else {
                 window.alert('Password atau Username Tidak Sesuai')
             }
@@ -62,12 +68,15 @@ const mapStateToProps = (state) => {
         statusLogin: state.auth.isLoggedIn,
         userList : state.auth.userListFromApp,
         listProduct: state.product.listProduct,
+        bestSeller : state.product.bestSeller,
+        newArrival : state.product.newArrival,
+        discountItem : state.product.discountItem,
     }
     
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    doLogin: (dataLogin,userlist,listProduct) => dispatch({ type: "LOGIN", payload: {dataLogin,userlist,listProduct}}),
+    doLogin: (dataLogin,userlist,listProduct,bestSeller,discountItem,newArrival) => dispatch({ type: "LOGIN", payload: {dataLogin,userlist,listProduct,bestSeller,discountItem,newArrival}}),
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(Masuk)

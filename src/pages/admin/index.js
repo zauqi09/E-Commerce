@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ProdukAdmin from './produk'
 import UserAdmin from './user'
+import SetHomePage from './sethomepage'
 import { Switch, Route } from "react-router-dom"
 import { Col, Container, Row ,Navbar,Nav} from 'react-bootstrap';
 import './style.css'
@@ -18,6 +19,7 @@ class Admin extends Component {
             <Switch>
                 <Route exact path="/admin" component ={() => <ProdukAdmin />}/>
                 <Route path="/admin/user" component ={() => <UserAdmin />}/>
+                <Route path="/admin/sethomepage" component ={() => <SetHomePage />}/>
             </Switch>
         )
     }
@@ -37,6 +39,7 @@ class Admin extends Component {
                             <Nav className="mr-auto">
                                 <NavAdmin link="/admin">Produk</NavAdmin>
                                 <NavAdmin link="/admin/user">User</NavAdmin>
+                                <NavAdmin link="/admin/sethomepage">Home Page</NavAdmin>
                             </Nav>
                         </Navbar>
                     </Row>

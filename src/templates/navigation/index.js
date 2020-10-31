@@ -10,7 +10,12 @@ class Navigation extends Component {
         this.state = {  }
     }
     change = () =>{
-        this.props.doLogout(this.props.userList,this.props.listProduct)
+        this.props.doLogout(this.props.userList,
+            this.props.listProduct,
+            this.props.bestSeller,
+            this.props.discountItem,
+            this.props.newArrival,
+            )
     }
     render() { 
         return ( 
@@ -67,13 +72,17 @@ const mapStateToProps = (state) => {
     return {
         statusLogin: state.auth.isLoggedIn,
         userList : state.auth.userListFromApp,
-        dataLogin : state.auth.dataLogin,
         listProduct: state.product.listProduct,
+        bestSeller : state.product.bestSeller,
+        newArrival : state.product.newArrival,
+        discountItem : state.product.discountItem,
+        dataProduct : state.product.dataProduct,
+        dataLogin : state.auth.dataLogin
     }
     
 }
 const mapDispatchToProps = (dispatch) => ({
-    doLogout: (userList,listProduct) => dispatch({ type: "LOGOUT", payload: {userList,listProduct} }),
+    doLogout: (userList,listProduct,bestSeller,discountItem,newArrival) => dispatch({ type: "LOGOUT", payload: {userList,listProduct,bestSeller,discountItem,newArrival} }),
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(Navigation)
