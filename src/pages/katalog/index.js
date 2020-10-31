@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux"
-import { Container,Col,Row,Card, Button, Form ,FormControl} from 'react-bootstrap'
-
+import { Container,Col,Row,Form ,FormControl} from 'react-bootstrap'
+import {ProdCard} from '../../components'
 class Katalog extends Component {
     constructor(props) {
         super(props);
@@ -35,7 +35,7 @@ class Katalog extends Component {
                             <Form.Group controlId="exampleForm.ControlSelect1">
                                 <Form.Label>Kategori</Form.Label>
                                 <FormControl as="select" name="kategori" onChange={this.onChangeInput}>
-                                    <option value="All">--</option>
+                                    <option value="All">Semua</option>
                                     <option value="Novel">Novel</option>
                                     <option value="Sains">Sains</option>
                                     <option value="Motivasi">Motivasi</option>
@@ -55,19 +55,7 @@ class Katalog extends Component {
                                     return book
                                 }
                             }).map((book, idx) => {
-                                return <Card key={idx} style={{ width: '9rem', marginBottom: '15px', marginRight: '15px' }}>
-                                            <div className="imageHover">
-                                                <Card.Img variant="top" style={{ height: '15rem'}} src={book.cover} />
-                                                <div className="cardHover">
-                                                    <div className="hoverContent">{book.judul}</div>
-                                                </div>
-                                            </div>
-                                            <Card.Body>
-                                            <Card.Title>{book.judul}</Card.Title>
-                                                <div className="author">{book.penulis}</div>
-                                                <div className="price">Rp. {book.harga}</div>
-                                            </Card.Body>
-                                        </Card>
+                                return <ProdCard book={book} idx={idx}/>
                             })
                         ) :
                         (
@@ -80,19 +68,7 @@ class Katalog extends Component {
                                     return book
                                 }
                             }).map((book, idx) => {
-                                return  <Card key={idx} style={{ width: '9rem', marginBottom: '15px', marginRight: '15px' }}>
-                                            <div className="imageHover">
-                                                <Card.Img variant="top" style={{ height: '15rem'}} src={book.cover} />
-                                                <div className="cardHover">
-                                                    <div className="hoverContent">{book.judul}</div>
-                                                </div>
-                                            </div>
-                                            <Card.Body>
-                                            <Card.Title>{book.judul}</Card.Title>
-                                                <div className="author">{book.penulis}</div>
-                                                <div className="price">Rp. {book.harga}</div>
-                                            </Card.Body>
-                                        </Card>
+                                return  <ProdCard book={book} idx={idx}/>
                                     })
                         )
                         }

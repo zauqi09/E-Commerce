@@ -1,30 +1,16 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Form, Table, Card, Button } from 'react-bootstrap';
-import carousel1 from '../../img/carousel1.jpg'
+import { Container, Row, Col, Table, Button, } from 'react-bootstrap';
 import { connect } from 'react-redux'
+import {RowKeranjang} from '../../components'
 
 class Keranjang extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
     }
-    OnhandlePlus = () => {
-        this.props.handlePlus(this.props.dataLogin,
-            this.props.userList,
-            this.props.listProduct,
-            this.props.bestSeller,
-            this.props.discountItem,
-            this.props.newArrival)
-    }
-    OnhandleMinus = () => {
-        this.props.handleMinus(this.props.dataLogin,
-            this.props.userList,
-            this.props.listProduct,
-            this.props.bestSeller,
-            this.props.discountItem,
-            this.props.newArrival)
-    }
+    
     render() { 
+        const trx = this.props.listCart
         return ( 
             <>
                 <Container>
@@ -35,33 +21,20 @@ class Keranjang extends Component {
                 <Container>
                     <Row>
                         <Col sm={12}>
-                            <Form>
-                                <div>
-                                    <Table>
-                                        <tr>
-                                            <td>
-                                            <Card style={{ width: '9rem' }}>
-                                                <Card.Img variant="top" src={carousel1} />
-                                            </Card>
-                                            </td>
-                                            <td>
-                                            <Card.Body>
-                                                <Card.Title>Book Title</Card.Title>
-                                            </Card.Body>
-                                            </td>
-                                            <td><p>Rp. 60.000</p></td>
-                                            <td>
-                                                <div>
-                                                    <Button onClick={this.OnhandleMinus} >-</Button>
-                                                    <input type="text" value={this.props.order} style={{textAlign: 'center'}} />
-                                                    <Button onClick={this.OnhandlePlus} >+</Button>
-                                                </div>
-                                            </td>
-                                            <td><p>Rp. 60.000</p></td>
-                                        </tr>
-                                    </Table>
-                                </div>
-                            </Form>
+                            <Table>
+                                {
+                                    trx.filter(trx =>{
+                                        if (trx.dataLogin.username===this.props.dataLogin.username){
+                                            return trx
+                                        }
+                                    }).map((trx, idx) => {
+                                        return <RowKeranjang trx={trx} idx={idx}/>
+                                    })
+                                }
+                                <tr>
+                                    <Button>Bayar</Button>
+                                </tr>
+                            </Table>
                         </Col>
                     </Row>
                 </Container>
@@ -72,23 +45,15 @@ class Keranjang extends Component {
 
 const mapStateToProps = (state) => {
     return {
+        dataLogin : state.auth.dataLogin,
+        detailProduct : state.product.detailProduct,
         statusLogin: state.auth.isLoggedIn,
         userList : state.auth.userListFromApp,
         listProduct: state.product.listProduct,
         order: state.cart.order,
-        bestSeller : state.product.bestSeller,
-        newArrival : state.product.newArrival,
-        discountItem : state.product.discountItem,
-        dataProduct : state.product.dataProduct,
-        dataLogin : state.auth.dataLogin
+        listCart: state.cart.listCart,
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        handlePlus: (dataLogin,userList,listProduct,bestSeller,discountItem,newArrival) => dispatch({ type: 'PLUS_ORDER', payload : {dataLogin,userList,listProduct,bestSeller,discountItem,newArrival}}),
-        handleMinus: (dataLogin,userList,listProduct,bestSeller,discountItem,newArrival) => dispatch({ type: 'MINUS_ORDER', payload : {dataLogin,userList,listProduct,bestSeller,discountItem,newArrival} }),
-    }
-}
  
-export default connect(mapStateToProps, mapDispatchToProps)(Keranjang);
+export default connect(mapStateToProps)(Keranjang);

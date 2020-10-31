@@ -49,11 +49,6 @@ const mapStateToProps = (state) => {
     
 }
   
-const mapDispatchToProps = (dispatch) => ({
-    addToBestSeller: (dataLogin,userlist,listProduct,bestSeller,discountItem,newArrival,dataProduct) => dispatch({ 
-            type: "ADDTOBESTSELLER", 
-            payload: {dataLogin,userlist,listProduct,bestSeller,discountItem,newArrival,dataProduct}}),
-})
 
-export default connect(mapStateToProps,mapDispatchToProps)(ListProduct)
+export default connect(mapStateToProps)(ListProduct)
   

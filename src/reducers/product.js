@@ -4,6 +4,7 @@ const initialState = {
     newArrival:[],
     discountItem:[],
     dataProduct:{},
+    detailProduct:{}
 }
 
 
@@ -12,71 +13,57 @@ const productReducer = (state = initialState, action) => {
     switch (action.type) {
         case "ADDPRODUCT":
             return {
-                
-                listProduct: [...action.payload.listProduct, action.payload.dataProd],
-                bestSeller: action.payload.bestSeller,
-                newArrival: action.payload.newArrival,
-                discountItem: action.payload.discountItem,
+                ...state,
+                listProduct: [...state.listProduct, action.payload.dataProd],
             }
         case "LOGIN":
             return {
-                listProduct: action.payload.listProduct,
-                bestSeller: action.payload.bestSeller,
-                newArrival: action.payload.newArrival,
-                discountItem: action.payload.discountItem,
+                ...state,
             } 
         case "REGISTER":
             return {
-                listProduct: action.payload.listProduct,
-                bestSeller: action.payload.bestSeller,
-                newArrival: action.payload.newArrival,
-                discountItem: action.payload.discountItem,
+                ...state,
             } 
         case "LOGOUT":
             return {
-                listProduct: action.payload.listProduct,
-                bestSeller: action.payload.bestSeller,
-                newArrival: action.payload.newArrival,
-                discountItem: action.payload.discountItem,
+                ...state,
             }
         case "ADDTOBESTSELLER":
             return {
-                listProduct: action.payload.listProduct,
-                bestSeller: [...action.payload.bestSeller, action.payload.dataProduct],
-                newArrival: action.payload.newArrival,
-                discountItem: action.payload.discountItem,
+                ...state,
+                bestSeller: [...state.bestSeller, action.payload.dataProduct],
             }      
         case "ADDTONEWARRIVAL":
             return {
-                listProduct: action.payload.listProduct,
-                bestSeller: action.payload.bestSeller,
-                newArrival: [...action.payload.newArrival, action.payload.dataProduct],
-                discountItem: action.payload.discountItem,
+                ...state,
+                newArrival: [...state.newArrival, action.payload.dataProduct],
+                
             }  
         
         case "ADDTOBESTDISCOUNTITEM":
             return {
-                listProduct: action.payload.listProduct,
-                bestSeller: action.payload.bestSeller,
-                newArrival: action.payload.newArrival,
-                discountItem: [...action.payload.discountItem, action.payload.dataProduct],
+                ...state,
+                discountItem: [...state.discountItem, action.payload.dataProduct],
             }
         case "PLUS_ORDER":
             return {
-                listProduct: action.payload.listProduct,
-                bestSeller: action.payload.bestSeller,
-                newArrival: action.payload.newArrival,
-                discountItem: action.payload.discountItem,
+                ...state
             }
         case "MINUS_ORDER":
             return {
-                listProduct: action.payload.listProduct,
-                bestSeller: action.payload.bestSeller,
-                newArrival: action.payload.newArrival,
-                discountItem: action.payload.discountItem,
-            }     
+                ...state
+            }
+        case "VIEWDETAIL":
+            return {
+                ...state,
+                detailProduct: action.payload.detailProduct,
+            }
+        case "ADDTOCART":
+            return {
+                ...state,
+            }           
         default:
-            return initialState
+            return state
         }
     }
 export default productReducer

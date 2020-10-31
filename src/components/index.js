@@ -7,5 +7,6 @@ import ModalDetail from './modal-produk/detail'
 import ListProduct from './listproduct'
 import SetHome from './sethome'
 import SixCol from './6col-card'
-
-export {NavLink, CarouselHome,NavAdmin,ListUser,AddProduk,ModalDetail,ListProduct,SetHome,SixCol}
+import ProdCard from './card'
+import RowKeranjang from './tabel-keranjang'
+export {NavLink, CarouselHome,NavAdmin,ListUser,AddProduk,ModalDetail,ListProduct,SetHome,SixCol,ProdCard,RowKeranjang}

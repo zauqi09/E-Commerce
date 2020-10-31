@@ -23,61 +23,60 @@ const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case "LOGIN":
             return {
+                ...state,
                 isLoggedIn: true,
                 dataLogin: action.payload.dataLogin,
-                userListFromApp: action.payload.userlist
+                
             }
         case "LOGOUT":
             return {
+                ...state,
                 isLoggedIn: false,
                 dataLogin : {},
-                userListFromApp: action.payload.userList
+                
             }
         case "REGISTER":
             return {
-                userListFromApp: [...action.payload.userlist, action.payload.dataRegister],
+                ...state,
+                userListFromApp: [...state.userListFromApp, action.payload.dataRegister],
                 isLoggedIn: true,
                 dataLogin: action.payload.dataLogin,
             }
         case "ADDPRODUCT":
             return {
-                isLoggedIn: true,
-                dataLogin: action.payload.dataLogin,
-                userListFromApp: action.payload.userList
+                ...state,
             }
         case "ADDTOBESTSELLER":
             return {
-                isLoggedIn: true,
-                dataLogin: action.payload.dataLogin,
-                userListFromApp: action.payload.userlist
+                ...state,
             }      
         case "ADDTONEWARRIVAL":
             return {
-                isLoggedIn: true,
-                dataLogin: action.payload.dataLogin,
-                userListFromApp: action.payload.userlist
+                ...state,
             }  
         
         case "ADDTOBESTDISCOUNTITEM":
             return {
-                isLoggedIn: true,
-                dataLogin: action.payload.dataLogin,
-                userListFromApp: action.payload.userlist
+                ...state,
             }
         case "PLUS_ORDER":
-                return {
-                    isLoggedIn: true,
-                    dataLogin: action.payload.dataLogin,
-                    userListFromApp: action.payload.userList
-                }
+            return {
+               ...state,
+            }
         case "MINUS_ORDER":
             return {
-                isLoggedIn: true,
-                dataLogin: action.payload.dataLogin,
-                userListFromApp: action.payload.userList
+                ...state,
+            }
+        case "VIEWDETAIL":
+            return {
+                ...state,
+            }
+        case "ADDTOCART":
+            return {
+                ...state,
             }
         default:
-            return initialState
+            return state
         }
     }
 export default authReducer

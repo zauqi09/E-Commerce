@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route } from "react-router-dom"
-import {Daftar, Home,Masuk,Katalog,Pembayaran,Admin,Keranjang,Profil} from '../../pages'
+import {Daftar, Home,Masuk,Katalog,Pembayaran,Admin,Keranjang,Detail,Profil} from '../../pages'
 
 class Body extends Component {
     constructor(props) {
@@ -19,6 +19,7 @@ class Body extends Component {
                 <Route path="/masuk" component ={() => <Masuk />}/>
                 <Route path="/daftar" component ={() => <Daftar />}/>
                 <Route path="/profil" component ={() => <Profil />}/>
+                <Route path="/detail" component ={() => <Detail />}/>
             </Switch>
         )
     }
