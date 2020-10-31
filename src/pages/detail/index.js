@@ -5,12 +5,17 @@ import { connect } from 'react-redux'
 class Detail extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = { defaultpcs : 
+            {
+                jumlah : 1
+            }
+        }
     }
 
     onAddtoCart = () => {
         const {dataLogin, detailProduct} = this.props
-        this.props.AddToCart({dataLogin, detailProduct})
+        const {defaultpcs} = this.state
+        this.props.AddToCart({dataLogin, detailProduct,defaultpcs})
         this.props.handlePlus()
     }
     
