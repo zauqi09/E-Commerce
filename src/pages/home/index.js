@@ -5,9 +5,11 @@ import carousel2 from '../../img/carousel2.jpg'
 import carousel3 from '../../img/carousel3.jpg'
 import './style.css'
 
+
 class Home extends Component {
     state = {  }
     render() { 
+
         return ( 
             <>
                 <Navbar bg="light" expand="lg">
@@ -22,7 +24,7 @@ class Home extends Component {
                             <Card style={{ width: '9rem' }}>
                                 <Card.Img variant="top" src={carousel1} />
                                 <Card.Body>
-                                    <Card.Title>Card Title</Card.Title>
+                                <Card.Title>Haha</Card.Title>
                                     <Button variant="primary btn-block">Rp. 60.000</Button>
                                 </Card.Body>
                             </Card>
@@ -90,4 +92,6 @@ class Home extends Component {
     }
 }
  
-export default Home;
+
+
+export default Home
