@@ -21,7 +21,7 @@ class CarouselHome extends Component {
                     <Col sm={2}/>
                     <Col sm={8}>
                     <Carousel>
-                        <Carousel.Item>
+                        <Carousel.Item interval={2000}>
                         <img
                             className="d-block w-100 img-carousel"
                             src={carousel1}
@@ -32,7 +32,7 @@ class CarouselHome extends Component {
                             <p>Produk baru telah tiba!.</p>
                         </Carousel.Caption>
                         </Carousel.Item>
-                        <Carousel.Item>
+                        <Carousel.Item interval={2000}>
                         <img
                             className="d-block w-100 img-carousel"
                             src={carousel2}
@@ -44,7 +44,7 @@ class CarouselHome extends Component {
                             <p>Belanja sekarang! Produk baru kami sudah hadir!.</p>
                         </Carousel.Caption>
                         </Carousel.Item>
-                        <Carousel.Item>
+                        <Carousel.Item interval={2000}>
                         <img
                             className="d-block w-100 img-carousel"
                             src={carousel3}
