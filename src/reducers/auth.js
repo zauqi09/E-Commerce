@@ -64,6 +64,18 @@ const authReducer = (state = initialState, action) => {
                 dataLogin: action.payload.dataLogin,
                 userListFromApp: action.payload.userlist
             }
+        case "PLUS_ORDER":
+                return {
+                    isLoggedIn: true,
+                    dataLogin: action.payload.dataLogin,
+                    userListFromApp: action.payload.userList
+                }
+        case "MINUS_ORDER":
+            return {
+                isLoggedIn: true,
+                dataLogin: action.payload.dataLogin,
+                userListFromApp: action.payload.userList
+            }
         default:
             return initialState
         }

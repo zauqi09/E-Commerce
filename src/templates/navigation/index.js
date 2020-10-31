@@ -39,8 +39,8 @@ class Navigation extends Component {
                                         this.props.dataLogin.type===1?
                                         <Nav className="mr-right">
                                             <div className="troley">
-                                                <NavLink link="/keranjang"><img src="https://www.flaticon.com/svg/static/icons/svg/833/833314.svg" width="17" /></NavLink>
                                                 <div className="count">{this.props.order}</div>
+                                                <NavLink link="/keranjang"><img alt="" src="https://www.flaticon.com/svg/static/icons/svg/833/833314.svg" width="17" /></NavLink>
                                             </div>
                                             <NavLink link="/admin">Admin</NavLink>
                                             <li className="nav-item">
@@ -50,8 +50,8 @@ class Navigation extends Component {
                                         :
                                         <Nav className="mr-right">
                                             <div className="troley">
-                                                <NavLink link="/keranjang"><img src="https://www.flaticon.com/svg/static/icons/svg/833/833314.svg" width="17" /></NavLink>
                                                 <div className="count">{this.props.order}</div>
+                                                <NavLink link="/keranjang"><img alt="" src="https://www.flaticon.com/svg/static/icons/svg/833/833314.svg" width="17" /></NavLink>
                                             </div>
                                             <li className="nav-item">
                                                 <div className="nav-link" onClick={this.change}>Keluar</div>

@@ -8,6 +8,22 @@ class Keranjang extends Component {
         super(props);
         this.state = {  }
     }
+    OnhandlePlus = () => {
+        this.props.handlePlus(this.props.dataLogin,
+            this.props.userList,
+            this.props.listProduct,
+            this.props.bestSeller,
+            this.props.discountItem,
+            this.props.newArrival)
+    }
+    OnhandleMinus = () => {
+        this.props.handleMinus(this.props.dataLogin,
+            this.props.userList,
+            this.props.listProduct,
+            this.props.bestSeller,
+            this.props.discountItem,
+            this.props.newArrival)
+    }
     render() { 
         return ( 
             <>
@@ -36,9 +52,9 @@ class Keranjang extends Component {
                                             <td><p>Rp. 60.000</p></td>
                                             <td>
                                                 <div>
-                                                    <Button onClick={this.props.handleMinus} >-</Button>
+                                                    <Button onClick={this.OnhandleMinus} >-</Button>
                                                     <input type="text" value={this.props.order} style={{textAlign: 'center'}} />
-                                                    <Button onClick={this.props.handlePlus} >+</Button>
+                                                    <Button onClick={this.OnhandlePlus} >+</Button>
                                                 </div>
                                             </td>
                                             <td><p>Rp. 60.000</p></td>
@@ -56,14 +72,22 @@ class Keranjang extends Component {
 
 const mapStateToProps = (state) => {
     return {
+        statusLogin: state.auth.isLoggedIn,
+        userList : state.auth.userListFromApp,
+        listProduct: state.product.listProduct,
         order: state.cart.order,
+        bestSeller : state.product.bestSeller,
+        newArrival : state.product.newArrival,
+        discountItem : state.product.discountItem,
+        dataProduct : state.product.dataProduct,
+        dataLogin : state.auth.dataLogin
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        handlePlus: () => dispatch({ type: 'PLUS_ORDER' }),
-        handleMinus: () => dispatch({ type: 'MINUS_ORDER' }),
+        handlePlus: (dataLogin,userList,listProduct,bestSeller,discountItem,newArrival) => dispatch({ type: 'PLUS_ORDER', payload : {dataLogin,userList,listProduct,bestSeller,discountItem,newArrival}}),
+        handleMinus: (dataLogin,userList,listProduct,bestSeller,discountItem,newArrival) => dispatch({ type: 'MINUS_ORDER', payload : {dataLogin,userList,listProduct,bestSeller,discountItem,newArrival} }),
     }
 }
  

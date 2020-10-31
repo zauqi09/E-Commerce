@@ -60,7 +60,21 @@ const productReducer = (state = initialState, action) => {
                 bestSeller: action.payload.bestSeller,
                 newArrival: action.payload.newArrival,
                 discountItem: [...action.payload.discountItem, action.payload.dataProduct],
-            }      
+            }
+        case "PLUS_ORDER":
+            return {
+                listProduct: action.payload.listProduct,
+                bestSeller: action.payload.bestSeller,
+                newArrival: action.payload.newArrival,
+                discountItem: action.payload.discountItem,
+            }
+        case "MINUS_ORDER":
+            return {
+                listProduct: action.payload.listProduct,
+                bestSeller: action.payload.bestSeller,
+                newArrival: action.payload.newArrival,
+                discountItem: action.payload.discountItem,
+            }     
         default:
             return initialState
         }

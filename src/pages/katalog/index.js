@@ -17,21 +17,10 @@ class Katalog extends Component {
         })
     }
 
-    // onSearch = () => {
-    //     const { cari, kategori } = this.state
-
-    //     const hasilCari = this.props.listProduct.filter(book =>{
-    //         if (kategori === "All" && cari === "" ) {
-    //             return book
-    //         } else if (book.judul.toLowerCase().includes(cari.toLowerCase()) || book.kategori === kategori) {
-    //             return book
-    //         }
-    //     })
-    // }
 
     render() { 
         const buku = this.props.listProduct
-        const { cari, kategori } = this.state
+        const { kategori } = this.state
 
         return ( 
             <Container>
@@ -39,42 +28,75 @@ class Katalog extends Component {
                 <h3>Katalog</h3>
                 <hr/>
                 <Row>
-                    <Col sm={4} >
+                    <Col sm={3} >
                         <h4>Pencarian</h4>
                         <Form>
                             <FormControl type="text" placeholder="Nama Buku" className="formcontrol" name="cari" onChange={this.onChangeInput}></FormControl>
                             <Form.Group controlId="exampleForm.ControlSelect1">
                                 <Form.Label>Kategori</Form.Label>
-                                <Form.Control as="select" name="kategori" onChange={this.onChangeInput}>
+                                <FormControl as="select" name="kategori" onChange={this.onChangeInput}>
+                                    <option value="All">--</option>
                                     <option value="Novel">Novel</option>
                                     <option value="Sains">Sains</option>
                                     <option value="Motivasi">Motivasi</option>
                                     <option value="Bisnis">Bisnis</option>
                                     <option value="Anak">Anak</option>
-                                </Form.Control>
+                                </FormControl>
                                 <br></br>
-                                <Button variant="btn btn-primary btn-block">Filter</Button>
                             </Form.Group>       
                         </Form>
                     </Col>
-                    <Col sm={8} style={{display:'flex', flexWrap:'wrap'}}>
+                    <Col  style={{display:'flex', flexWrap:'wrap'}}>
+                        <>
                         {
-                        buku.filter(book =>{
-                            if (kategori === "All" && cari === "" ) {
-                                return book
-                            } else if (book.judul.toLowerCase().includes(cari.toLowerCase()) || book.kategori === kategori) {
-                                return book
-                            }
-                        }).map((book, idx) => {
-                            return  <Card key={idx} style={{ width: '9rem', marginBottom: '15px', marginRight: '15px' }}>
-                                        <Card.Img variant="top" src={book.cover} />
-                                        <Card.Body>
+                        kategori === "All" ? (
+                            buku.filter(book =>{
+                                if (book.judul.toLowerCase().includes(this.state.cari.toLowerCase())){
+                                    return book
+                                }
+                            }).map((book, idx) => {
+                                return <Card key={idx} style={{ width: '9rem', marginBottom: '15px', marginRight: '15px' }}>
+                                            <div className="imageHover">
+                                                <Card.Img variant="top" style={{ height: '15rem'}} src={book.cover} />
+                                                <div className="cardHover">
+                                                    <div className="hoverContent">{book.judul}</div>
+                                                </div>
+                                            </div>
+                                            <Card.Body>
                                             <Card.Title>{book.judul}</Card.Title>
-                                            <Button variant="primary btn-block">Rp {book.harga}</Button>
-                                        </Card.Body>
-                                    </Card>
-                        })
+                                                <div className="author">{book.penulis}</div>
+                                                <div className="price">Rp. {book.harga}</div>
+                                            </Card.Body>
+                                        </Card>
+                            })
+                        ) :
+                        (
+                            buku.filter(book =>{
+                                if (book.kategori === this.state.kategori ) {
+                                    return book
+                                }
+                            }).filter(book =>{
+                                if (book.judul.toLowerCase().includes(this.state.cari.toLowerCase())){
+                                    return book
+                                }
+                            }).map((book, idx) => {
+                                return  <Card key={idx} style={{ width: '9rem', marginBottom: '15px', marginRight: '15px' }}>
+                                            <div className="imageHover">
+                                                <Card.Img variant="top" style={{ height: '15rem'}} src={book.cover} />
+                                                <div className="cardHover">
+                                                    <div className="hoverContent">{book.judul}</div>
+                                                </div>
+                                            </div>
+                                            <Card.Body>
+                                            <Card.Title>{book.judul}</Card.Title>
+                                                <div className="author">{book.penulis}</div>
+                                                <div className="price">Rp. {book.harga}</div>
+                                            </Card.Body>
+                                        </Card>
+                                    })
+                        )
                         }
+                        </>
                     </Col>
                 </Row>
             </Container>

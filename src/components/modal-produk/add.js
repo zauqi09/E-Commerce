@@ -24,7 +24,6 @@ class AddProduk extends Component {
         this.setState({        
             [e.target.name]:e.target.value
         })
-        
     }
     handleClose = () => {
         this.setState({
@@ -65,13 +64,13 @@ class AddProduk extends Component {
               <Modal.Body>
                     <Form>
                         <FormControl onChange={this.onChangeInput} name="judul" type="text" placeholder="Judul" className="formcontrol"/>
-                        <Form.Control name="kategori" as="select" onChange={this.onChangeInput}>
+                        <FormControl name="kategori" as="select" onChange={this.onChangeInput}>
                                 <option value="Novel">Novel</option>
                                 <option value="Sains">Sains</option>
                                 <option value="Motivasi">Motivasi</option>
-                                <option value="Komik">Komik</option>
+                                <option value="Bisnis">Bisnis</option>
                                 <option value="Anak">Anak</option>
-                        </Form.Control>
+                        </FormControl>
                         <FormControl onChange={this.onChangeInput} name="harga" type="number" placeholder="Harga" className="formcontrol"/>
                         <FormControl onChange={this.onChangeInput} name="penulis" type="text" placeholder="Penulis" className="formcontrol"/>
                         <FormControl onChange={this.onChangeInput} name="penerbit" type="text" placeholder="Penerbit" className="formcontrol"/>
