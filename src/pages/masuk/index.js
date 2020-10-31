@@ -37,7 +37,7 @@ class Masuk extends Component {
 
     render() { 
         if (this.props.statusLogin){
-            return <Redirect to='/'/>
+            return <Redirect to='/admin'/>
         }
         return ( 
             <Container>
