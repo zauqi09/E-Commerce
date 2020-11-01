@@ -12,6 +12,9 @@ class Daftar extends Component {
             email :"",
             password : "",
             name :"",
+            alamat : "",
+            telepon : "",
+            jeniskelamin : "",
             type :2,
          }
     }
@@ -22,7 +25,7 @@ class Daftar extends Component {
         console.log(e.target.name);
     }
     onRegist =  ()=> {
-        const {username,email,password,name,passwordConfirm,type} = this.state
+        const {username,email,password,name,passwordConfirm,type,jeniskelamin,alamat,telepon} = this.state
         const UserList = this.props.userList.find(user => (user.username === username))
         if (username && password){   
             if (UserList){
@@ -30,7 +33,7 @@ class Daftar extends Component {
             }else{
                 if (password === passwordConfirm){ 
                     window.alert('Berhasil Daftar, anda akan berada dihalaman utama')
-                    this.props.doRegist({username,email,password,name,type},
+                    this.props.doRegist({username,email,password,name,type,jeniskelamin,alamat,telepon},
                         {username,password,type})
                 }   
                 else {

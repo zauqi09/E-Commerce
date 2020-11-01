@@ -62,9 +62,6 @@ const mapStateToProps = (state) => {
         statusLogin: state.auth.isLoggedIn,
         userList : state.auth.userListFromApp,
         listProduct: state.product.listProduct,
-        bestSeller : state.product.bestSeller,
-        newArrival : state.product.newArrival,
-        discountItem : state.product.discountItem,
     }
     
 }

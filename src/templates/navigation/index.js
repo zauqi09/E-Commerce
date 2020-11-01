@@ -34,9 +34,10 @@ class Navigation extends Component {
                                         this.props.dataLogin.type===1?
                                         <Nav className="mr-right">
                                             <div className="troley">
-                                                <div className="count">{this.props.order}</div>
+                                                {/* <div className="count">{this.props.order}</div> */}
                                                 <NavLink link="/keranjang"><img alt="" src="https://www.flaticon.com/svg/static/icons/svg/833/833314.svg" width="17" /></NavLink>
                                             </div>
+                                            <NavLink link="/profil">Profil</NavLink>
                                             <NavLink link="/admin">Admin</NavLink>
                                             <li className="nav-item">
                                                 <div className="nav-link" onClick={this.change}>Keluar</div>
@@ -45,9 +46,10 @@ class Navigation extends Component {
                                         :
                                         <Nav className="mr-right">
                                             <div className="troley">
-                                                <div className="count">{this.props.order}</div>
+                                                {/* <div className="count">{this.props.order}</div> */}
                                                 <NavLink link="/keranjang"><img alt="" src="https://www.flaticon.com/svg/static/icons/svg/833/833314.svg" width="17" /></NavLink>
                                             </div>
+                                            <NavLink link="/profil">Profil</NavLink>
                                             <li className="nav-item">
                                                 <div className="nav-link" onClick={this.change}>Keluar</div>
                                             </li >
@@ -72,13 +74,7 @@ class Navigation extends Component {
 const mapStateToProps = (state) => {
     return {
         statusLogin: state.auth.isLoggedIn,
-        userList : state.auth.userListFromApp,
-        listProduct: state.product.listProduct,
-        order: state.cart.order,
-        bestSeller : state.product.bestSeller,
-        newArrival : state.product.newArrival,
-        discountItem : state.product.discountItem,
-        dataProduct : state.product.dataProduct,
+        
         dataLogin : state.auth.dataLogin
     }
     

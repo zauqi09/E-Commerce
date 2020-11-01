@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux"
-import {EditUser} from '../../components'
+import {EditUser,DetailUser} from '../../components'
 class ListUser extends Component {
     constructor(props) {
         super(props);
@@ -22,9 +22,11 @@ class ListUser extends Component {
                             <td>{user.username}</td>
                             <td>{user.email}</td>
                             <td>{user.name}</td>
-                            <td>
+                            <td>        
+                                        
                                         <EditUser indexProd={idx}/>  
-                                        <button className='btn btn-danger sizefix' onClick={() => { if (window.confirm('Apakah Data Ingin Dihapus?')) this.Delete(idx) } }>Delete</button>             
+                                        <button className='btn btn-danger sizefix' onClick={() => { if (window.confirm('Apakah Data Ingin Dihapus?')) this.Delete(idx) } }>Delete</button> 
+                                        <DetailUser indexProd={idx}/>              
                             </td>
                         </tr>
                     })}
