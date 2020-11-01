@@ -10,12 +10,7 @@ class Navigation extends Component {
         this.state = {  }
     }
     change = () =>{
-        this.props.doLogout(this.props.userList,
-            this.props.listProduct,
-            this.props.bestSeller,
-            this.props.discountItem,
-            this.props.newArrival,
-            )
+        this.props.doLogout()
     }
     render() { 
         return ( 
@@ -89,22 +84,7 @@ const mapStateToProps = (state) => {
     
 }
 const mapDispatchToProps = (dispatch) => ({
-    doLogout: (userList,listProduct,bestSeller,discountItem,newArrival) => dispatch({ type: "LOGOUT", payload: {userList,listProduct,bestSeller,discountItem,newArrival} }),
+    doLogout: () => dispatch({ type: "LOGOUT" }),
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(Navigation)
-
-// const mapStateToProps = (state) => {
-//     return {
-//         order: state.cart.order,
-//     }
-// }
-
-// // const mapDispatchToProps = (dispatch) => {
-// //     return {
-// //         handlePlus: () => dispatch('PLUS_ORDER'),
-// //         handleMinus: () => dispatch('MINUS_ORDER'),
-// //     }
-// // }
- 
-// export default connect(mapStateToProps)(Navigation);

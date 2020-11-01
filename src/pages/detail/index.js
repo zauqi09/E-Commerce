@@ -5,18 +5,14 @@ import { connect } from 'react-redux'
 class Detail extends Component {
     constructor(props) {
         super(props);
-        this.state = { defaultpcs : 
-            {
-                jumlah : 1
-            }
+        this.state = { jumlah : 1
         }
     }
 
     onAddtoCart = () => {
         const {dataLogin, detailProduct} = this.props
-        const {defaultpcs} = this.state
-        this.props.AddToCart({dataLogin, detailProduct,defaultpcs})
-        this.props.handlePlus()
+        const {jumlah} = this.state
+        this.props.AddToCart({dataLogin, detailProduct,jumlah})
     }
     
     render() { 
@@ -135,7 +131,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         AddToCart: (dataCart) => dispatch({ type: 'ADDTOCART', payload : {dataCart}}),
-        handlePlus: () => dispatch({ type: 'PLUS_ORDER'}),
     }
 }
  
