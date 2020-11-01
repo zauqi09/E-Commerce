@@ -42,6 +42,11 @@ const authReducer = (state = initialState, action) => {
                 isLoggedIn: true,
                 dataLogin: action.payload.dataLogin,
             }
+        case "DELETEUSER":
+            return {
+                ...state,
+                userListFromApp: action.payload.hapususer,
+            }
         case "ADDPRODUCT":
             return {
                 ...state,
