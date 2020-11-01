@@ -3,6 +3,9 @@ import Form from 'react-bootstrap/Form'
 import {Container, Row, Col, Button, Navbar} from 'react-bootstrap'
 import "./style.css"
 import {RowPembayaran} from '../../components'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
+
 class Pembayaran extends Component {
     constructor(props) {
         super(props);
@@ -10,6 +13,9 @@ class Pembayaran extends Component {
     }
     render() { 
         const trx= this.props.listTrx 
+        if (!this.props.statusLogin){
+            return <Redirect to='/masuk'/>
+        }
         return ( 
             <>
             <Container>
@@ -24,33 +30,43 @@ class Pembayaran extends Component {
                         <th>Harga</th>
                     </tr>
                     {
-                        trx.filter(trx =>{
-                            if (trx.dataLogin.username===this.props.dataLogin.username){
+                        trx.filter((trx) =>{
+                            if (trx.trx.dataLogin.username===this.props.dataLogin.username){
                                 return trx
                             } 
-                        }).map((trx, idx) => {
+                        }).map((trx) => {
                             return <>
-                                <RowPembayaran judul={trx.} kategori={} harga={}/>
+                                <RowPembayaran judul={trx.trx.detailProduct.judul} kategori={trx.trx.detailProduct.kategori} harga={trx.trx.detailProduct.harga}/>
                                                     <hr/>
                                                 </>    
                                         }) 
-                                }            
+                    }            
                     
                 </table>
-                <div className="tagihan">
-                    <Form.Group as={Row} controlId="formHorizontalUsername">
-                        <Form.Label column sm={3}>Jumlah Tagihan</Form.Label>
-                        <Col sm={7}>
-                            <h6>Rp. 275.000</h6>
-                        </Col>
-                    </Form.Group>
-                    <Form.Group as={Row} controlId="formHorizontalUsername">
-                        <Form.Label column sm={3}>Kode Pembayaran</Form.Label>
-                        <Col sm={7}>
-                            <h6>TRJ00122731</h6>
-                        </Col>
-                    </Form.Group>
-                </div>
+                {
+                    trx.filter((trx) =>{
+                        if (trx.trx.dataLogin.username===this.props.dataLogin.username){
+                            return trx
+                        } 
+                    }).map((trx) => {
+                        return <><div className="tagihan">
+                                    <Form.Group as={Row}>
+                                        <Form.Label column sm={3}>Jumlah Tagihan</Form.Label>
+                                        <Col sm={7}>
+                                            <h6>{trx.trx.detailProduct.harga}</h6>
+                                        </Col>
+                                    </Form.Group>
+                                    <Form.Group as={Row}>
+                                        <Form.Label column sm={3}>Kode Pembayaran</Form.Label>
+                                        <Col sm={7}>
+                                            <h6>{trx.ID}</h6>
+                                        </Col>
+                                    </Form.Group>
+                                </div>
+                                </>
+                    })
+                }
+                
                 <div>
                     <p>Silahkan transfer ke salah satu bank berikut ini:</p>
                 </div>
@@ -88,6 +104,7 @@ const mapStateToProps = (state) => {
         statusLogin: state.auth.isLoggedIn,
         userList : state.auth.userListFromApp,
         listProduct: state.product.listProduct,
+        dataLogin : state.auth.dataLogin,
         order: state.cart.order,
         listTrx: state.trx.listTrx,
     }

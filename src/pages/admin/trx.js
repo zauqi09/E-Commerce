@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {Table} from 'react-bootstrap'
+import {TransaksiAdmin} from '../../components'
+
 class Transaksi extends Component {
     constructor(props) {
         super(props);
@@ -21,7 +23,7 @@ class Transaksi extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        
+                        <TransaksiAdmin/>
                     </tbody>
                 </Table>
             </>

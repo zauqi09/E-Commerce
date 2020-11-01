@@ -14,6 +14,8 @@ import ProdCard from './card'
 import RowKeranjang from './tabel-keranjang'
 import FormProfileEdit from './formprofile'
 import RowPembayaran from './rowpembayaran'
+import TransaksiAdmin from './admin-transaksi'
+
 export {NavLink, CarouselHome,NavAdmin,RowPembayaran, ListUser,
     AddProduk,ModalDetail,EditUser,EditProduk,
-    ListProduct,SetHome,SixCol,ProdCard,RowKeranjang,FormProfileEdit,DetailUser}
+    ListProduct,SetHome,SixCol,ProdCard,RowKeranjang,FormProfileEdit,DetailUser,TransaksiAdmin}
