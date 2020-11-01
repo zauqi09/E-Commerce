@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Table, Button, } from 'react-bootstrap';
+import { Container, Table, Button, } from 'react-bootstrap';
 import { connect } from 'react-redux'
 import {RowKeranjang} from '../../components'
 
@@ -19,27 +19,30 @@ class Keranjang extends Component {
                     <hr/>
                 </Container>
                 <Container>
-                    <Row>
-                        <Col sm={12}>
-                            <Table>
+                    <Table>
                                 {
-                                    trx.find(trx =>{
-                                        
-                                    })
                                     trx.filter(trx =>{
-                                        if (trx.dataLogin.username===this.props.dataLogin.username){
-                                            return trx
-                                        }
-                                    }).map((trx, idx) => {
-                                        return <RowKeranjang trx={trx} idx={idx}/>
-                                    })
-                                }
-                                <tr>
-                                    <Button>Bayar</Button>
-                                </tr>
-                            </Table>
-                        </Col>
-                    </Row>
+                                            if (trx.dataLogin.username===this.props.dataLogin.username){
+                                                return trx
+                                            } 
+                                        }).map((trx, idx) => {
+                                            return <>
+                                                <RowKeranjang trx={trx} idx={idx}/>
+                                                <tr>
+                                                    <td/>
+                                                    <td/>
+                                                    <td/>
+                                                    <td/>
+                                                    <td>
+                                                        <Button style={{margin : 0}}>Bayar Sekarang</Button>
+                                                    </td>
+                                                </tr>
+                                            </>
+                                        })  
+                                }    
+                    </Table>
+                    
+                    <br/>
                 </Container>
             </>
          );

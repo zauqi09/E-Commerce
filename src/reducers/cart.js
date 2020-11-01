@@ -13,7 +13,7 @@ const CartReducer = (state = initialState, action) => {
         case "MINUS_ORDER":
             return {
                 ...state,
-                order: state.order -1,
+                order : state.order -1,
             }
         case "ADDTOCART":
             return {
