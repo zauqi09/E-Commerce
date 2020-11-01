@@ -14,7 +14,7 @@ const initialState = {
         type : 1
       }],
     dataLogin : {},
-    dataRegister :{}
+    dataRegister :{},
 }
 
 

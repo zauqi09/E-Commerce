@@ -6,6 +6,10 @@ class EditUser extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            username :"",
+            email : "",
+            name : "",
+            password : "",
             setShow : false,
             show : false
         }
@@ -52,8 +56,6 @@ class EditUser extends Component {
                         <FormControl onChange={this.onChangeInput} name="email" type="text" value={usr[index].email} ></FormControl>
                         <FormLabel>Name</FormLabel>
                         <FormControl onChange={this.onChangeInput} name="name" type="text" value={usr[index].name} ></FormControl>
-                        <FormLabel>Name</FormLabel>
-                        <FormControl onChange={this.onChangeInput} name="name" type="text" value={usr[index].password} ></FormControl>
                     </Modal.Body>
 
                     <Modal.Footer>
