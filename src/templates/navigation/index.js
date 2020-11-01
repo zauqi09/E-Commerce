@@ -24,10 +24,10 @@ class Navigation extends Component {
                                     <NavLink link="/">Home</NavLink>
                                     <NavLink link="/katalog">Catalog</NavLink>
                                 </Nav>
-                                <Form inline>
+                                {/* <Form inline>
                                     <FormControl type="text" placeholder="Search" className="mr-md-2" />
                                     <Button variant="outline-success">Search</Button>
-                                </Form>
+                                </Form> */}
                                 {this.props.statusLogin?
                                 <>
                                     {

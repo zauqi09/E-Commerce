@@ -11,7 +11,7 @@ class Home extends Component {
 
         return ( 
             <>
-                <div expand="lg">
+                {/* <div expand="lg">
                     <Container className="typeContainer">
                         <Button variant="outline-info" size="sm" className="bookType">Novel</Button>{' '}
                         <Button variant="outline-info" size="sm" className="bookType">Motivasi</Button>{' '}
@@ -19,7 +19,7 @@ class Home extends Component {
                         <Button variant="outline-info" size="sm" className="bookType">Komik</Button>{' '}
                         <Button variant="outline-info" size="sm" className="bookType">Sains</Button>{' '}
                     </Container>
-                </div>
+                </div> */}
 
                 {/* container best seller */}
                 <Navbar bg="light" expand="lg">
