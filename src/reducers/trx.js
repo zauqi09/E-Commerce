@@ -1,7 +1,7 @@
 const initialState = {
     listTrx : [],
 }
-const CartReducer = (state = initialState, action) => {
+const TrxReducer = (state = initialState, action) => {
     switch (action.type) {
         case "ADDTRX":
             return {
@@ -13,4 +13,4 @@ const CartReducer = (state = initialState, action) => {
         }
 }
 
-export default CartReducer
+export default TrxReducer

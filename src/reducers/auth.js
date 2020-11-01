@@ -5,16 +5,23 @@ const initialState = {
         email : "admin@admin.com",
         name : "admin",
         password : "123",
-        type : 1
+        type : 1,
+        alamat : "",
+        telepon : "",
+        jeniskelamin : "",
       },{
         username : "zauqi09",
         email : "zauqi09@gmail.com",
         name : "Fuad Zauqi Nur",
         password : "123",
-        type : 1
+        type : 1,
+        alamat : "",
+        telepon : "",
+        jeniskelamin : "",
       }],
     dataLogin : {},
     dataRegister :{},
+    currentUser :[],
 }
 
 
@@ -80,6 +87,12 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
             }
+        case "EDITPROFIL":
+            return {
+                ...state,
+                currentUser: state.userListFromApp.filter((item, index) => index !== action.payload.index),
+                userListFromApp : [...state.currentUser, action.payload.userList ]
+            }    
         default:
             return state
         }

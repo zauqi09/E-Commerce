@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
-import { Container, Table, Button, } from 'react-bootstrap';
+import { Container, Col, Button, Row } from 'react-bootstrap';
 import { connect } from 'react-redux'
 import {RowKeranjang} from '../../components'
-
+import { Redirect } from 'react-router-dom';
 class Keranjang extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
     }
-    
+    onClickBayar=()=>{
+
+    }
     render() { 
         const trx = this.props.listCart
+        if (!this.props.statusLogin){
+            return <Redirect to='/masuk'/>
+        }
         return ( 
             <>
                 <Container>
@@ -19,7 +24,6 @@ class Keranjang extends Component {
                     <hr/>
                 </Container>
                 <Container>
-                    <Table>
                                 {
                                     trx.filter(trx =>{
                                             if (trx.dataLogin.username===this.props.dataLogin.username){
@@ -27,21 +31,19 @@ class Keranjang extends Component {
                                             } 
                                         }).map((trx, idx) => {
                                             return <>
-                                                <RowKeranjang trx={trx} idx={idx}/>
-                                                <tr>
-                                                    <td/>
-                                                    <td/>
-                                                    <td/>
-                                                    <td/>
-                                                    <td>
-                                                        <Button style={{margin : 0}}>Bayar Sekarang</Button>
-                                                    </td>
-                                                </tr>
-                                            </>
-                                        })  
-                                }    
-                    </Table>
-                    
+                                                    <RowKeranjang trx={trx} idx={idx}/>
+                                                    <hr/>
+                                                </>    
+                                        }) 
+                                }             
+                                <Row>
+                                    <Col sm={6}/>
+                                    <Col sm={4}>Total Belanja : </Col>
+                                    <Col sm={2}>
+                                        <Button onClick={this.onClickBayar} style={{margin : 0}}>Bayar Sekarang</Button>
+                                    </Col>
+                                    
+                                </Row>      
                     <br/>
                 </Container>
             </>
@@ -60,6 +62,10 @@ const mapStateToProps = (state) => {
         listCart: state.cart.listCart,
     }
 }
-
+const mapDispatchToProps = (dispatch) => {
+    return {
+        Bayar: (dataTrx) => dispatch({ type: 'ADDTOTRX', payload : dataTrx}),
+    }
+}
  
-export default connect(mapStateToProps)(Keranjang);
+export default connect(mapStateToProps,mapDispatchToProps)(Keranjang);

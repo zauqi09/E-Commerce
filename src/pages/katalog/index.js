@@ -10,7 +10,11 @@ class Katalog extends Component {
             kategori: ""
         }
     }
-
+    componentDidMount=()=>{
+        this.setState({
+            kategori: "All"
+        })
+    }
     onChangeInput = e => {
         this.setState({        
             [e.target.name]:e.target.value

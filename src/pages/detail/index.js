@@ -13,6 +13,7 @@ class Detail extends Component {
         const {dataLogin, detailProduct} = this.props
         const {jumlah} = this.state
         this.props.AddToCart({dataLogin, detailProduct,jumlah})
+        window.alert("Telah ditambahkan ke keranjang")
     }
     
     render() { 
