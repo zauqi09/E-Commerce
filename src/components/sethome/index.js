@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux"
 import {Table} from 'react-bootstrap'
 import {ModalDetail} from '../../components'
 class SetHome extends Component {
@@ -6,6 +7,17 @@ class SetHome extends Component {
         super(props);
         this.state = {  }
     }
+
+    RemoveBestSeller = (idx) => {
+        this.props.HapusBestSeller(idx)
+    }
+    RemoveNewArrival = (idx) => {
+        this.props.HapusNewArrival(idx)
+    }
+    RemoveDiscountItem = (idx) => {
+        this.props.HapusDiscountItem(idx)
+    }
+
     render() { 
         const {dataTabel} = this.props
         return ( 
@@ -28,9 +40,22 @@ class SetHome extends Component {
                                 <td>{product.penulis}</td>
                                 <td>{product.harga}</td>
                                 <td>
-                                    <button className='btn btn-danger sizefix'>Delete</button>  
-                                    <ModalDetail indexProd={idx}/>
-                                                       
+                                    {
+                                        dataTabel === this.props.listNewArrival ?
+                                            <>
+                                                <button className='btn btn-danger sizefix' onClick={() => { if (window.confirm('Apakah Data Ingin Dihapus?')) this.RemoveNewArrival(idx) } }>Delete</button>
+                                            </>
+                                        : dataTabel === this.props.listBestSeller ?
+                                            <>
+                                                <button className='btn btn-danger sizefix' onClick={() => { if (window.confirm('Apakah Data Ingin Dihapus?')) this.RemoveBestSeller(idx) } }>Delete</button>
+                                            </>
+                                        :
+                                            <>
+                                                <button className='btn btn-danger sizefix' onClick={() => { if (window.confirm('Apakah Data Ingin Dihapus?')) this.RemoveDiscountItem(idx) } }>Delete</button>
+                                            </>
+                                    }   
+                                      
+                                    <ModalDetail indexProd={idx}/>                   
                                 </td>
                             </tr>
                         })}
@@ -41,5 +66,21 @@ class SetHome extends Component {
          );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        statusLogin: state.auth.isLoggedIn,
+        userList : state.auth.userListFromApp,
+        listNewArrival: state.product.newArrival,
+        listBestSeller: state.product.bestSeller,
+        listDiscountItem: state.product.discountItem,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+    HapusBestSeller: (index) => dispatch({ type: "REMOVEBESTSELLER", payload: index}),
+    HapusNewArrival: (index) => dispatch({ type: "REMOVENEWARRIVAL", payload: index}),
+    HapusDiscountItem: (index) => dispatch({ type: "REMOVEDISCOUNTITEM", payload: index}),
+})
  
-export default SetHome;
+export default connect(mapStateToProps,mapDispatchToProps)(SetHome);
