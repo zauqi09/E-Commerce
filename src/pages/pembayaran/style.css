@@ -1,0 +1,40 @@
+.detailBeli {
+    margin: 20px 0;
+}
+
+.tagihan {
+    background-color: #f8f9fb;
+    padding-left: 40px;
+    padding-top: 10px;
+    width: 80%;
+}
+
+.transfer {
+    padding-top: 20px;
+    margin: 50px 350px;
+    text-align: center;
+    border: 1px dashed gray;
+}
+
+.tablePayment {
+    width: 80%;
+    margin: 20px 0;
+    border: 1px solid gray;
+    
+}
+
+.tablePayment th,td {
+    padding: 10px;
+}
+
+.imageLogo {
+    width: 150px;
+}
+
+.buttonBayar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
