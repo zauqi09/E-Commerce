@@ -9,6 +9,11 @@ class ListProduct extends Component {
          }
     }
     
+    Delete = (idx) => {
+        const hapus = this.props.listProduct.slice(0,idx)
+        console.log(hapus);
+        this.props.HapusProduct(hapus)
+     }
 
     render() { 
         const prod = this.props.listProduct
@@ -23,7 +28,7 @@ class ListProduct extends Component {
                             <td>{product.harga}</td>
                             <td>
                                         <EditProduk indexProd={idx}/>  
-                                        <button className='btn btn-danger sizefix'>Delete</button>   
+                                        <button className='btn btn-danger sizefix' onClick={() => { if (window.confirm('Apakah Data Ingin Dihapus?')) this.Delete({idx}) } }>Delete</button>   
                                         <ModalDetail indexProd={idx}/>
                                                   
                             </td>
@@ -41,9 +46,12 @@ const mapStateToProps = (state) => {
         userList : state.auth.userListFromApp,
         listProduct: state.product.listProduct,
     }
-    
 }
+
+const mapDispatchToProps = (dispatch) => ({
+    HapusProduct: (hapusproduct) => dispatch({ type: "DELETEPRODUK", payload: {hapusproduct}}),
+})
   
 
-export default connect(mapStateToProps)(ListProduct)
+export default connect(mapStateToProps,mapDispatchToProps)(ListProduct)
   

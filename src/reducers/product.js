@@ -16,6 +16,11 @@ const productReducer = (state = initialState, action) => {
                 ...state,
                 listProduct: [...state.listProduct, action.payload.dataProd],
             }
+        case "DELETEPRODUK":
+            return {
+                ...state,
+                listProduct: action.payload.hapusproduct
+            }
         case "LOGIN":
             return {
                 ...state,
