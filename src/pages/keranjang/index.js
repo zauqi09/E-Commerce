@@ -8,9 +8,7 @@ class Keranjang extends Component {
         super(props);
         this.state = {  }
     }
-    onClickBayar=()=>{
-
-    }
+    
     render() { 
         const trx = this.props.listCart
         if (!this.props.statusLogin){
@@ -36,14 +34,6 @@ class Keranjang extends Component {
                                                 </>    
                                         }) 
                                 }             
-                                <Row>
-                                    <Col sm={6}/>
-                                    <Col sm={4}>Total Belanja : </Col>
-                                    <Col sm={2}>
-                                        <Button onClick={this.onClickBayar} style={{margin : 0}}>Bayar Sekarang</Button>
-                                    </Col>
-                                    
-                                </Row>      
                     <br/>
                 </Container>
             </>
@@ -62,10 +52,5 @@ const mapStateToProps = (state) => {
         listCart: state.cart.listCart,
     }
 }
-const mapDispatchToProps = (dispatch) => {
-    return {
-        Bayar: (dataTrx) => dispatch({ type: 'ADDTOTRX', payload : dataTrx}),
-    }
-}
  
-export default connect(mapStateToProps,mapDispatchToProps)(Keranjang);
+export default connect(mapStateToProps)(Keranjang);

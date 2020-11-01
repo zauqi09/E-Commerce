@@ -1,7 +1,7 @@
 const initialState = {
     listCart : [],
     curentCart : [],
-
+    listjumlah : [],
 }
 
 const CartReducer = (state = initialState, action) => {
@@ -10,10 +10,6 @@ const CartReducer = (state = initialState, action) => {
             return {
                 ...state,
                 listCart: [...state.listCart, action.payload.dataCart],
-            }
-        case "UPDATEJUMLAH":
-            return {
-                ...state,
             }
         default:
             return state
