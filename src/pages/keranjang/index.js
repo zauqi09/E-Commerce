@@ -23,6 +23,9 @@ class Keranjang extends Component {
                         <Col sm={12}>
                             <Table>
                                 {
+                                    trx.find(trx =>{
+                                        
+                                    })
                                     trx.filter(trx =>{
                                         if (trx.dataLogin.username===this.props.dataLogin.username){
                                             return trx
