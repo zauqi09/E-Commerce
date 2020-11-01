@@ -42,14 +42,29 @@ const productReducer = (state = initialState, action) => {
             return {
                 ...state,
                 newArrival: [...state.newArrival, action.payload.dataProduct],
-                
             }  
-        
         case "ADDTOBESTDISCOUNTITEM":
             return {
                 ...state,
                 discountItem: [...state.discountItem, action.payload.dataProduct],
             }
+        case "REMOVEBESTSELLER":
+            return{
+                ...state,
+                bestSeller: state.bestSeller.filter((item, index) => index !== action.payload)
+            }
+        case "REMOVENEWARRIVAL":
+            return{
+                ...state,
+                newArrival: state.newArrival.filter((item, index) => index !== action.payload)
+            }
+        case "REMOVEDISCOUNTITEM":
+            return{
+                ...state,
+                discountItem: state.discountItem.filter((item, index) => index !== action.payload)
+            }
+
+
         case "PLUS_ORDER":
             return {
                 ...state

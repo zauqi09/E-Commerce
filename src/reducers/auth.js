@@ -59,10 +59,13 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
             }  
-        
         case "ADDTOBESTDISCOUNTITEM":
             return {
                 ...state,
+            }
+        case "REMOVEPRODUK":
+            return{
+                ...state
             }
         case "PLUS_ORDER":
             return {
