@@ -19,7 +19,7 @@ const productReducer = (state = initialState, action) => {
         case "DELETEPRODUK":
             return {
                 ...state,
-                listProduct: action.payload.hapusproduct
+                listProduct: state.listProduct.filter((item, index) => index !== action.payload),
             }
         case "LOGIN":
             return {

@@ -45,7 +45,7 @@ const authReducer = (state = initialState, action) => {
         case "DELETEUSER":
             return {
                 ...state,
-                userListFromApp: action.payload.hapususer,
+                userListFromApp: state.userListFromApp.filter((item, index) => index !== action.payload),
             }
         case "ADDPRODUCT":
             return {

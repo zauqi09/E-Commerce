@@ -10,9 +10,7 @@ class ListProduct extends Component {
     }
     
     Delete = (idx) => {
-        const hapus = this.props.listProduct.slice(0,idx)
-        console.log(hapus);
-        this.props.HapusProduct(hapus)
+        this.props.HapusProduct(idx)
      }
 
     render() { 
@@ -26,10 +24,10 @@ class ListProduct extends Component {
                             <td>{product.judul}</td>
                             <td>{product.penulis}</td>
                             <td>{product.harga}</td>
-                            <td>
-                                        <EditProduk indexProd={idx}/>  
-                                        <button className='btn btn-danger sizefix' onClick={() => { if (window.confirm('Apakah Data Ingin Dihapus?')) this.Delete({idx}) } }>Delete</button>   
-                                        <ModalDetail indexProd={idx}/>
+                            <td>        
+                                <EditProduk indexProd={idx}/>  
+                                <button className='btn btn-danger sizefix' onClick={() => { if (window.confirm('Apakah Data Ingin Dihapus?')) this.Delete(idx) } }>Delete</button>   
+                                <ModalDetail indexProd={idx}/>
                                                   
                             </td>
                         </tr>
@@ -49,7 +47,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    HapusProduct: (hapusproduct) => dispatch({ type: "DELETEPRODUK", payload: {hapusproduct}}),
+    HapusProduct: (index) => dispatch({ type: "DELETEPRODUK", payload: index}),
 })
   
 

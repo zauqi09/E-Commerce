@@ -8,9 +8,7 @@ class ListUser extends Component {
     }
 
     Delete = (idx) => {
-       const hapus = this.props.userList.slice(0,idx)
-       console.log(hapus);
-       this.props.HapusUser(hapus)
+       this.props.HapusUser(idx)
     }
 
     render() { 
@@ -26,7 +24,7 @@ class ListUser extends Component {
                             <td>{user.name}</td>
                             <td>
                                         <EditUser indexProd={idx}/>  
-                                        <button className='btn btn-danger sizefix' onClick={() => { if (window.confirm('Apakah Data Ingin Dihapus?')) this.Delete({idx}) } }>Delete</button>             
+                                        <button className='btn btn-danger sizefix' onClick={() => { if (window.confirm('Apakah Data Ingin Dihapus?')) this.Delete(idx) } }>Delete</button>             
                             </td>
                         </tr>
                     })}
@@ -42,7 +40,7 @@ const mapStateToProps = (state) => ({
   })
   
 const mapDispatchToProps = (dispatch) => ({
-    HapusUser: (hapususer) => dispatch({ type: "DELETEUSER", payload: {hapususer}}),
+    HapusUser: (index) => dispatch({ type: "DELETEUSER", payload: index}),
 })
   
 export default connect(mapStateToProps,mapDispatchToProps)(ListUser)
