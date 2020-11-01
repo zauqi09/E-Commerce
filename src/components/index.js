@@ -13,7 +13,7 @@ import SixCol from './6col-card'
 import ProdCard from './card'
 import RowKeranjang from './tabel-keranjang'
 import FormProfileEdit from './formprofile'
-
-export {NavLink, CarouselHome,NavAdmin,ListUser,
+import RowPembayaran from './rowpembayaran'
+export {NavLink, CarouselHome,NavAdmin,RowPembayaran, ListUser,
     AddProduk,ModalDetail,EditUser,EditProduk,
     ListProduct,SetHome,SixCol,ProdCard,RowKeranjang,FormProfileEdit,DetailUser}

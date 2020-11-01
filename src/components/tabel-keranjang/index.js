@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Button, Row, Col, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux'
+import {Link} from 'react-router-dom'
 class RowKeranjang extends Component {
     constructor(props) {
         super(props);
@@ -11,7 +12,10 @@ class RowKeranjang extends Component {
     }
 
     onClickBayar=()=>{
-
+        const trx = this.props.trx
+        const ID = 'BOOK_TRX-' + Math.random().toString(36).substr(2, 9)
+        this.props.Bayar({trx,ID})
+        window.alert("Silahkan melakukan pembayaran")
     }
 
     render() { 
@@ -35,7 +39,7 @@ class RowKeranjang extends Component {
                     <Col sm={6}/>
                     <Col sm={4}></Col>
                     <Col sm={2}>
-                        <Button onClick={this.onClickBayar}>Bayar Sekarang</Button>
+                        <Link className="btn btn-primary" to="/pembayaran" onClick={this.onClickBayar}>Bayar Sekarang</Link>
                     </Col>
                     
                 </Row>  
@@ -56,7 +60,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         updateHarga: (dataTrx) => dispatch({ type: 'UPDATEHARGA', payload : dataTrx}),
-        Bayar: (dataTrx) => dispatch({ type: 'ADDTOTRX', payload : dataTrx}),
+        Bayar: (dataTrx) => dispatch({ type: 'ADDTRX', payload : dataTrx}),
     }
 }
  

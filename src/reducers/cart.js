@@ -1,7 +1,6 @@
 const initialState = {
     listCart : [],
-    curentCart : [],
-    listjumlah : [],
+
 }
 
 const CartReducer = (state = initialState, action) => {

@@ -2,27 +2,16 @@ import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form'
 import {Container, Row, Col, Button, Navbar} from 'react-bootstrap'
 import "./style.css"
-
+import {RowPembayaran} from '../../components'
 class Pembayaran extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
     }
     render() { 
+        const trx= this.props.listTrx 
         return ( 
             <>
-            {/* <Container>
-                <Navbar bg="light" expand="lg">
-                    <Container><p className="header4">Detail Pembelian</p></Container>
-                </Navbar>
-                <Navbar bg="light" expand="lg">
-                    <Container><p className="header4"></p></Container>
-                </Navbar>
-                <Navbar bg="light" expand="lg">
-                    <Container><p className="header4">Kode Pembayaran</p></Container>
-                    <Container><p className="header4">FTRQ00011123412</p></Container>
-                </Navbar>
-            </Container> */}
             <Container>
                 <div className="detailBeli">
                     <h4>Detail Pembelian</h4>
@@ -34,16 +23,19 @@ class Pembayaran extends Component {
                         <th>Kategori</th>
                         <th>Harga</th>
                     </tr>
-                    <tr>
-                        <td>Rich Dad Poor Dad</td>
-                        <td>Bisnis</td>
-                        <td>Rp. 62.000</td>
-                    </tr>
-                    <tr>
-                        <td>The Intelligent Investor</td>
-                        <td>Bisnis</td>
-                        <td>Rp. 120.000</td>
-                    </tr>
+                    {
+                        trx.filter(trx =>{
+                            if (trx.dataLogin.username===this.props.dataLogin.username){
+                                return trx
+                            } 
+                        }).map((trx, idx) => {
+                            return <>
+                                <RowPembayaran judul={trx.} kategori={} harga={}/>
+                                                    <hr/>
+                                                </>    
+                                        }) 
+                                }            
+                    
                 </table>
                 <div className="tagihan">
                     <Form.Group as={Row} controlId="formHorizontalUsername">
@@ -91,5 +83,19 @@ class Pembayaran extends Component {
          );
     }
 }
- 
-export default Pembayaran;
+const mapStateToProps = (state) => {
+    return {
+        statusLogin: state.auth.isLoggedIn,
+        userList : state.auth.userListFromApp,
+        listProduct: state.product.listProduct,
+        order: state.cart.order,
+        listTrx: state.trx.listTrx,
+    }
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateHarga: (dataTrx) => dispatch({ type: 'UPDATEHARGA', payload : dataTrx}),
+        Bayar: (dataTrx) => dispatch({ type: 'ADDTRX', payload : dataTrx}),
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Pembayaran);

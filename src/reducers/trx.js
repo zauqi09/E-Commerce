@@ -6,7 +6,7 @@ const TrxReducer = (state = initialState, action) => {
         case "ADDTRX":
             return {
                 ...state,
-                listTrx: [...state.listTrx, action.payload.dataTrx],
+                listTrx: [...state.listTrx, action.payload],
             }
         default:
             return state
