@@ -54,25 +54,14 @@ class Katalog extends Component {
                         <>
                         {
                         kategori === "All" ? (
-                            buku.filter(book =>{
-                                if (book.judul.toLowerCase().includes(this.state.cari.toLowerCase())){
-                                    return book
-                                }
-                            }).map((book, idx) => {
-                                return <ProdCard book={book} idx={idx}/>
+                            buku.filter(book => book.judul.toLowerCase().includes(this.state.cari.toLowerCase())&&book).map((book, idx) => {
+                                return <ProdCard key={idx} book={book} idx={idx}/>
                             })
                         ) :
                         (
-                            buku.filter(book =>{
-                                if (book.kategori === this.state.kategori ) {
-                                    return book
-                                }
-                            }).filter(book =>{
-                                if (book.judul.toLowerCase().includes(this.state.cari.toLowerCase())){
-                                    return book
-                                }
-                            }).map((book, idx) => {
-                                return  <ProdCard book={book} idx={idx}/>
+                            buku.filter(book => book.kategori === this.state.kategori && book).filter(book => 
+                                book.judul.toLowerCase().includes(this.state.cari.toLowerCase()) && book).map((book, idx) => {
+                                return  <ProdCard key={idx} book={book} idx={idx}/>
                                     })
                         )
                         }

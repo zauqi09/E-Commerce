@@ -126,7 +126,7 @@ class FormProfileEdit extends Component {
          );
     }
 }
- 
+
 const mapStateToProps = (state) => {
     return {
         statusLogin: state.auth.isLoggedIn,

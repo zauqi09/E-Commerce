@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Col, Button, Row } from 'react-bootstrap';
+import { Container} from 'react-bootstrap';
 import { connect } from 'react-redux'
 import {RowKeranjang} from '../../components'
 import { Redirect } from 'react-router-dom';
@@ -23,13 +23,9 @@ class Keranjang extends Component {
                 </Container>
                 <Container>
                                 {
-                                    trx.filter(trx =>{
-                                            if (trx.dataLogin.username===this.props.dataLogin.username){
-                                                return trx
-                                            } 
-                                        }).map((trx, idx) => {
+                                    trx.filter(trx =>trx.dataLogin.username===this.props.dataLogin.username&&trx).map((trx, idx) => {
                                             return <>
-                                                    <RowKeranjang trx={trx} idx={idx}/>
+                                                    <RowKeranjang key={idx} trx={trx} idx={idx}/>
                                                     <hr/>
                                                 </>    
                                         }) 

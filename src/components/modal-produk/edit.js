@@ -29,8 +29,8 @@ class EditProduk extends Component {
         })
     }   
     handleEdit = () =>{
-        const prod = this.props.listProduct
-        const index = this.props.indexProd
+        //const prod = this.props.listProduct
+        //const index = this.props.indexProd
         const { judul,kategori,harga, bahasa, penulis,penerbit,negara,jumlahhal,deskripsi,cover } = this.state
 
         this.props.updateProduct({judul,kategori, harga, bahasa,penulis,penerbit,negara,jumlahhal,deskripsi,cover})

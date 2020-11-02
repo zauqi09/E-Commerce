@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Container, Row, Button, Navbar} from 'react-bootstrap'
+import {Container, Row, Navbar} from 'react-bootstrap'
 import { connect } from "react-redux"
 import './style.css'
 import {SixCol} from '../../components'

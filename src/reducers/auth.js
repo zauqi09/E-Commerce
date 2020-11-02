@@ -33,7 +33,6 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 isLoggedIn: true,
                 dataLogin: action.payload.dataLogin,
-                
             }
         case "LOGOUT":
             return {

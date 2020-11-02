@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button, Row, Col, FormControl } from 'react-bootstrap';
+import { Card, Row, Col, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux'
 import {Link} from 'react-router-dom'
 class RowKeranjang extends Component {
@@ -19,10 +19,10 @@ class RowKeranjang extends Component {
     }
 
     render() { 
-        const {trx,idx} = this.props
+        const {trx} = this.props
         return ( 
             <>
-                <Row>
+                <Row >
                     <Col>
                         <Card style={{ width: '9rem' }}>
                             <Card.Img variant="top" src={trx.detailProduct.cover} />

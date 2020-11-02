@@ -13,19 +13,18 @@ class Masuk extends Component {
          }
     }
     onChangeInput = e => {
-        this.setState({        
+        this.setState({
             [e.target.name]:e.target.value
         })
-        
     }
     onLogin = () => {
         const { username, password } = this.state
-        if (username && password){    
+        if (username && password){
             let statusLogin = this.props.userList.find(user => (user.username === username && user.password === password))
             if (statusLogin){
                 window.alert('Berhasil Login!')
                 let type = statusLogin.type
-                this.props.doLogin({username,password,type})     
+                this.props.doLogin({username,password,type})
             }else {
                 window.alert('Password atau Username Tidak Sesuai')
             }
@@ -34,7 +33,6 @@ class Masuk extends Component {
               window.alert("Username dan Password tidak boleh kosong!")
           }
         }
-
     render() { 
         if (this.props.statusLogin){
             return <Redirect to='/'/>

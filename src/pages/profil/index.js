@@ -31,7 +31,7 @@ class Profil extends Component {
             <Container>
                 {
                     this.props.userList.filter(user=> user.username===this.props.dataLogin.username).map((user,idx) =>{
-                        return <FormProfileEdit user={user} index={idx}/>
+                        return <FormProfileEdit key={idx} user={user} index={idx}/>
                     })
                 }
             </Container>

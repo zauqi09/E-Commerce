@@ -12,7 +12,7 @@ const loadState = () => {
         console.warn(e)
         return undefined;
     }
-  }; 
+  }
 
 const saveState = (state) => {
     try {
@@ -21,7 +21,7 @@ const saveState = (state) => {
     }  catch (e) {
         console.warn(e)
     }
-  };
+  }
 
 const persistedState = loadState();
 
